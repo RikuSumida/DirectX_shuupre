@@ -244,7 +244,9 @@ void CEnemy::Update(void)
 			Length = D3DXVec3Length(&m_change);
 			if (Length < EnemyLength)
 			{
+				
 				D3DXVec3Normalize(&m_change, &m_change);
+				//D3DXVec3Length(&m_change);
 
 				m_Vec1 += -m_change ;
 			}
@@ -279,7 +281,9 @@ void CEnemy::Update(void)
 	}
 	//ŠeŒÂ‘Ì‚ÍŒü‚«‚ð‡‚í‚¹‚æ‚¤‚Æ‚·‚é
 	m_center /= ENEMY_MAX;
+	
 	D3DXVec3Normalize(&m_center,&m_center);
+	//D3DXVec3Length(&m_center);
 	m_Vec1 += m_center;
 	//m_Position += m_Vec1 * 2;
 
@@ -302,7 +306,9 @@ void CEnemy::Update(void)
 
 	//ŠeŒÂ‘Ì‚ÍŒQ‚ê‚Ì’†S‚ÖˆÚ“®‚µ‚æ‚¤‚Æ‚·‚é
 	m_change = m_center - m_Position;
+	
 	D3DXVec3Normalize(&m_change, &m_change);
+	//D3DXVec3Length(&m_change);
 	m_Vec1 += m_change;
 
 
