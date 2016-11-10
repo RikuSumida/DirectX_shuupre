@@ -97,6 +97,7 @@
     <ClCompile Include="manager.cpp" />
     <ClCompile Include="meshfield.cpp" />
     <ClCompile Include="model.cpp" />
+    <ClCompile Include="Orbit.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
     <ClCompile Include="resultbg.cpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="meshfield.h" />
     <ClInclude Include="mode.h" />
     <ClInclude Include="model.h" />
+    <ClInclude Include="Oebit.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="result.h" />
     <ClInclude Include="resultbg.h" />
