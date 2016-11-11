@@ -46,8 +46,8 @@ void CCamera:: Init ( void )
 	LPDIRECT3DDEVICE9 pDevice = Renderer ->GetDevice();
 
 	//ƒJƒƒ‰Ý’è
-	m_Camera . posV = D3DXVECTOR3 ( 0.0f , 100.0f , 150.0f ) ;
-	m_Camera . posR = D3DXVECTOR3 ( 500.0f , 50.0f , 500.0f ) ;
+	m_Camera . posV = D3DXVECTOR3 ( 1250.0f , 1000.0f , 1000.0f ) ;
+	m_Camera . posR = D3DXVECTOR3 ( 1250.0f , 0.0f , 1000.0f ) ;
 	m_Camera . vecU = D3DXVECTOR3 ( 0.0f , 1.0f , 0.0f ) ;
 	m_Camera . fDistance = sqrtf ( ( m_Camera . posV . x * m_Camera . posV . x ) +  ( m_Camera . posV . z * m_Camera . posV . z ) ) ;
 	m_Camera . rot = D3DXVECTOR3 ( 0.0f , 0.0f , 0.0f ) ;
@@ -95,12 +95,12 @@ void CCamera::Update(void)
 	Input = GetManager()->GetInput();
 
 
-	m_Camera . posR .x = PlayerPos.x;
-	m_Camera . posR .y = PlayerPos.y+70;
-	m_Camera . posR .z = PlayerPos.z;
+	//m_Camera . posR .x = PlayerPos.x;
+	//m_Camera . posR .y = PlayerPos.y+70;
+	//m_Camera . posR .z = PlayerPos.z;
 
-	m_Camera.posV.y = PlayerPos.y + 100;
-	m_Camera.posV.z = PlayerPos.z + 100;
+	//m_Camera.posV.y = PlayerPos.y + 100;
+	//m_Camera.posV.z = PlayerPos.z + 100;
 	/*******ƒJƒƒ‰ˆÚ“®‘€ì******/
 	if ( Input->GetKeyboardPress ( DIK_UP ) )
 	{
