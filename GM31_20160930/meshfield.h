@@ -8,8 +8,8 @@
 
 //マクロ定義
 /*フィールドの大きさ*/
-#define BLOCK_SIZE ( 5000 )
-#define BLOCK_SIZE_Z ( 5000 )
+#define BLOCK_SIZE ( 2500 )
+#define BLOCK_SIZE_Z ( 2500 )
 
 /*ブロック数*/
 #define BLOCK_X ( 9.0f )
