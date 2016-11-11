@@ -1,4 +1,3 @@
-
 /*******************************************************************************
 *
 *	インクルードファイル
@@ -67,52 +66,55 @@ HRESULT CEnemy:: Init ( void )
 	/*角度*/
 	m_fAnglebillboard = atan2f ( Enemy_WIDTH , Enemy_HEIGHT ) ;
 
+	m_model = new CModel;
+	//モデル読み込み
+	m_model->Init("data/MODEL/Sheep.x",NULL);
 
-	/*テクスチャの読み込み*/
-	D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/seep.png" , & m_pTexturePolygon ) ;
-	for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
-	{
-		/*頂点バッファの生成*                        確保するバッファサイズ                         使用する頂点フォーマット*/
-		if ( FAILED ( pDevice ->CreateVertexBuffer ( sizeof ( VERTEX_3D ) * 4 , D3DUSAGE_WRITEONLY , FVF_VERTEX_3D , D3DPOOL_MANAGED , & m_pVtxBuffPolygon  , NULL ) ) )
-		{
-			return E_FAIL ;
-		}
-	}
+	///*テクスチャの読み込み*/
+	//D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/seep.png" , & m_pTexturePolygon ) ;
+	//for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
+	//{
+	//	/*頂点バッファの生成*                        確保するバッファサイズ                         使用する頂点フォーマット*/
+	//	if ( FAILED ( pDevice ->CreateVertexBuffer ( sizeof ( VERTEX_3D ) * 4 , D3DUSAGE_WRITEONLY , FVF_VERTEX_3D , D3DPOOL_MANAGED , & m_pVtxBuffPolygon  , NULL ) ) )
+	//	{
+	//		return E_FAIL ;
+	//	}
+	//}
 
-	/*メモリ確保*/
-	m_pVtxBuffPolygon  ->Lock ( 0 , 0 , ( void** ) & pVtx , 0 ) ;
-	pVtx [ 0 ].pos .x = m_Position .x - sinf ( m_fAnglebillboard + m_Rotation .z  ) * m_fLengthbillboard ;
-	pVtx [ 0 ].pos .y = 50.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
-	pVtx [ 0 ].pos .z = 0.0f ;
-	pVtx [ 1 ].pos .x = m_Position .x + sinf ( m_fAnglebillboard + m_Rotation .z  ) * m_fLengthbillboard ;
-	pVtx [ 1 ].pos .y = 50.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
-	pVtx [ 1 ].pos .z = 0.0f ;
-	pVtx [ 2 ].pos .x = m_Position .x - sinf ( m_fAnglebillboard - m_Rotation .z  ) * m_fLengthbillboard ;
-	pVtx [ 2 ].pos .y = 0;//g_posbillboard .y + cosf ( g_fAnglebillboard - g_rotbillboard .z  ) * g_fLengthbillboard ;
-	pVtx [ 2 ].pos .z = 0.0f ;
-	pVtx [ 3 ].pos .x = m_Position .x + sinf ( m_fAnglebillboard - m_Rotation .z ) * m_fLengthbillboard ;
-	pVtx [ 3 ].pos .y = 0;//g_posbillboard .y + cosf ( g_fAnglebillboard - g_rotbillboard .z ) * g_fLengthbillboard ;
-	pVtx [ 3 ].pos .z = 0.0f ;
+	///*メモリ確保*/
+	//m_pVtxBuffPolygon  ->Lock ( 0 , 0 , ( void** ) & pVtx , 0 ) ;
+	//pVtx [ 0 ].pos .x = m_Position .x - sinf ( m_fAnglebillboard + m_Rotation .z  ) * m_fLengthbillboard ;
+	//pVtx [ 0 ].pos .y = 50.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
+	//pVtx [ 0 ].pos .z = 0.0f ;
+	//pVtx [ 1 ].pos .x = m_Position .x + sinf ( m_fAnglebillboard + m_Rotation .z  ) * m_fLengthbillboard ;
+	//pVtx [ 1 ].pos .y = 50.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
+	//pVtx [ 1 ].pos .z = 0.0f ;
+	//pVtx [ 2 ].pos .x = m_Position .x - sinf ( m_fAnglebillboard - m_Rotation .z  ) * m_fLengthbillboard ;
+	//pVtx [ 2 ].pos .y = 0;//g_posbillboard .y + cosf ( g_fAnglebillboard - g_rotbillboard .z  ) * g_fLengthbillboard ;
+	//pVtx [ 2 ].pos .z = 0.0f ;
+	//pVtx [ 3 ].pos .x = m_Position .x + sinf ( m_fAnglebillboard - m_Rotation .z ) * m_fLengthbillboard ;
+	//pVtx [ 3 ].pos .y = 0;//g_posbillboard .y + cosf ( g_fAnglebillboard - g_rotbillboard .z ) * g_fLengthbillboard ;
+	//pVtx [ 3 ].pos .z = 0.0f ;
 
 
-	pVtx [ 0 ].nor = D3DXVECTOR3 ( 0.0f , 1.0f , 0.0f ) ;
-	pVtx [ 1 ].nor = D3DXVECTOR3 ( 0.0f , 1.0f , 0.0f ) ;
-	pVtx [ 2 ].nor = D3DXVECTOR3 ( 0.0f , 1.0f , 0.0f ) ;
-	pVtx [ 3 ].nor = D3DXVECTOR3 ( 0.0f , 1.0f , 0.0f ) ;
+	//pVtx [ 0 ].nor = D3DXVECTOR3 ( 0.0f , 1.0f , 0.0f ) ;
+	//pVtx [ 1 ].nor = D3DXVECTOR3 ( 0.0f , 1.0f , 0.0f ) ;
+	//pVtx [ 2 ].nor = D3DXVECTOR3 ( 0.0f , 1.0f , 0.0f ) ;
+	//pVtx [ 3 ].nor = D3DXVECTOR3 ( 0.0f , 1.0f , 0.0f ) ;
 
-	/*頂点カラー*/
+	///*頂点カラー*/
 
-	pVtx [ 0 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
-	pVtx [ 1 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
-	pVtx [ 2 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
-	pVtx [ 3 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
-	/*テクスチャ座標*******************   U     V   */
-	pVtx [ 0 ].tex = D3DXVECTOR2 ( 0.0f , 0.0f ) ;
-	pVtx [ 1 ].tex = D3DXVECTOR2 ( 1 , 0.0f ) ;
-	pVtx [ 2 ].tex = D3DXVECTOR2 ( 0.0f , 1 ) ;
-	pVtx [ 3 ].tex = D3DXVECTOR2 ( 1 , 1 ) ;
-	/*解放*/
-	m_pVtxBuffPolygon  ->Unlock ( ) ;
+	//pVtx [ 0 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
+	//pVtx [ 1 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
+	//pVtx [ 2 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
+	//pVtx [ 3 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
+	///*テクスチャ座標*******************   U     V   */
+	//pVtx [ 0 ].tex = D3DXVECTOR2 ( 0.0f , 0.0f ) ;
+	//pVtx [ 1 ].tex = D3DXVECTOR2 ( 1 , 0.0f ) ;
+	//pVtx [ 2 ].tex = D3DXVECTOR2 ( 0.0f , 1 ) ;
+	//pVtx [ 3 ].tex = D3DXVECTOR2 ( 1 , 1 ) ;
+	///*解放*/
+	//m_pVtxBuffPolygon  ->Unlock ( ) ;
 	m_Position = D3DXVECTOR3 ( rand()%3500 , 0 , rand()%3500 ) ;
 	//m_Vec1 = D3DXVECTOR3(rand()%5,0,rand()%5);
 	EnemyLength =  rand()%100;
@@ -145,23 +147,24 @@ CEnemy* CEnemy::Create(void)
 *******************************************************************************/
 void CEnemy::Uninit(void)
 {
-	for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
-	{
-		/*頂点バッファの解放*/
-		if ( m_pVtxBuffPolygon  != NULL )
-		{
-			m_pVtxBuffPolygon ->Release ( ) ;
-			m_pVtxBuffPolygon  = NULL ;
-		}
-		
-		/*頂点バッファの解放*/
-		if ( m_pTexturePolygon  != NULL )
-		{
-			m_pTexturePolygon ->Release ( ) ;
-			m_pTexturePolygon  = NULL ;
-		}
+	m_model->Uninit();
+	//for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
+	//{
+	//	/*頂点バッファの解放*/
+	//	if ( m_pVtxBuffPolygon  != NULL )
+	//	{
+	//		m_pVtxBuffPolygon ->Release ( ) ;
+	//		m_pVtxBuffPolygon  = NULL ;
+	//	}
+	//	
+	//	/*頂点バッファの解放*/
+	//	if ( m_pTexturePolygon  != NULL )
+	//	{
+	//		m_pTexturePolygon ->Release ( ) ;
+	//		m_pTexturePolygon  = NULL ;
+	//	}
 
-	}
+	//}
 
 }
 D3DXVECTOR3 CEnemy::GetVec(void)
@@ -380,12 +383,12 @@ void CEnemy:: Draw ( void )
 	/*ビューマトリクスを取得*/
 	pDevice ->GetTransform ( D3DTS_VIEW , & mtxView ) ;
 
-	/*逆行列を求める*/
-	D3DXMatrixInverse ( & m_mtxWorld , NULL , & mtxView ) ;
+	///*逆行列を求める*/
+	//D3DXMatrixInverse ( & m_mtxWorld , NULL , & mtxView ) ;
 
-	m_mtxWorld ._41 = 0.0f ;
-	m_mtxWorld ._42 = 0.0f ;
-	m_mtxWorld ._43 = 0.0f ;
+	//m_mtxWorld ._41 = 0.0f ;
+	//m_mtxWorld ._42 = 0.0f ;
+	//m_mtxWorld ._43 = 0.0f ;
 
 
 	/*スケールを反映*/
@@ -404,35 +407,37 @@ void CEnemy:: Draw ( void )
 		
 	pDevice -> SetTransform ( D3DTS_WORLD , & m_mtxWorld ) ;
 
+	m_model->Draw();
 
 
-	/*頂点バッファをデータストリームにバインド*/
-	pDevice  ->SetStreamSource ( 0 , m_pVtxBuffPolygon , 0 , sizeof ( VERTEX_3D ) ) ;
-	/*ポリゴン描画*/
-	/*頂点フォーマットの設定*/
-	pDevice ->SetFVF ( FVF_VERTEX_3D ) ;
-	/*テクスチャの設定*/
-	pDevice  ->SetTexture ( 0 , m_pTexturePolygon ) ;
 
-	pDevice ->SetRenderState ( D3DRS_ALPHATESTENABLE , TRUE ) ;
-	pDevice ->SetRenderState ( D3DRS_ALPHAFUNC , D3DCMP_GREATER ) ;
-	pDevice ->SetRenderState ( D3DRS_ALPHAREF , 30 ) ;
+	///*頂点バッファをデータストリームにバインド*/
+	//pDevice  ->SetStreamSource ( 0 , m_pVtxBuffPolygon , 0 , sizeof ( VERTEX_3D ) ) ;
+	///*ポリゴン描画*/
+	///*頂点フォーマットの設定*/
+	//pDevice ->SetFVF ( FVF_VERTEX_3D ) ;
+	///*テクスチャの設定*/
+	//pDevice  ->SetTexture ( 0 , m_pTexturePolygon ) ;
+
+	//pDevice ->SetRenderState ( D3DRS_ALPHATESTENABLE , TRUE ) ;
+	//pDevice ->SetRenderState ( D3DRS_ALPHAFUNC , D3DCMP_GREATER ) ;
+	//pDevice ->SetRenderState ( D3DRS_ALPHAREF , 30 ) ;
 
 
-	/*ポリゴン描画*/
-	/******************************ポリゴンの種類****描画するプリミティブ数**データの先頭アドレス**データ間隔*/
-	if(m_Use == true)
-	{
-		pDevice ->DrawPrimitive ( D3DPT_TRIANGLESTRIP  , 0 , PRIMITIVE ) ;
-	}
+	///*ポリゴン描画*/
+	///******************************ポリゴンの種類****描画するプリミティブ数**データの先頭アドレス**データ間隔*/
+	////if(m_Use == true)
+	////{
+	////	pDevice ->DrawPrimitive ( D3DPT_TRIANGLESTRIP  , 0 , PRIMITIVE ) ;
+	////}
 
-	pDevice ->SetRenderState ( D3DRS_ALPHATESTENABLE , FALSE ) ;
-	pDevice ->SetRenderState ( D3DRS_ALPHAFUNC , D3DCMP_ALWAYS ) ;
-	pDevice ->SetRenderState ( D3DRS_ALPHAREF , 0 ) ;
-	//pDevice ->SetRenderState ( D3DRS_CULLMODE , D3DCULL_CCW ) ;
-	//pDevice ->SetRenderState ( D3DRS_ALPHABLENDENABLE , TRUE ) ;
-	//pDevice ->SetRenderState ( D3DRS_SRCBLEND , D3DBLEND_SRCALPHA ) ;
-	//pDevice ->SetRenderState ( D3DRS_DESTBLEND , D3DBLEND_INVSRCALPHA ) ;
+	//pDevice ->SetRenderState ( D3DRS_ALPHATESTENABLE , FALSE ) ;
+	//pDevice ->SetRenderState ( D3DRS_ALPHAFUNC , D3DCMP_ALWAYS ) ;
+	//pDevice ->SetRenderState ( D3DRS_ALPHAREF , 0 ) ;
+	////pDevice ->SetRenderState ( D3DRS_CULLMODE , D3DCULL_CCW ) ;
+	////pDevice ->SetRenderState ( D3DRS_ALPHABLENDENABLE , TRUE ) ;
+	////pDevice ->SetRenderState ( D3DRS_SRCBLEND , D3DBLEND_SRCALPHA ) ;
+	////pDevice ->SetRenderState ( D3DRS_DESTBLEND , D3DBLEND_INVSRCALPHA ) ;
 
 
 }

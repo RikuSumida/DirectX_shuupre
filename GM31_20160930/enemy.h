@@ -36,6 +36,9 @@ class CEnemy: public CScene3D
 {
 protected:
 
+	//ƒ‚ƒfƒ‹
+	CModel *m_model;
+
 	//ì‹Æ—p•Ï”
 	float m_Rot;
 
