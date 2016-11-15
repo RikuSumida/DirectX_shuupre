@@ -46,7 +46,7 @@ void CCamera:: Init ( void )
 	LPDIRECT3DDEVICE9 pDevice = Renderer ->GetDevice();
 
 	//ƒJƒƒ‰Ý’è
-	m_Camera . posV = D3DXVECTOR3 ( 1250.0f , 1000.0f , 1000.0f ) ;
+	m_Camera . posV = D3DXVECTOR3 ( 1250.0f , 1000.0f , -600.0f ) ;
 	m_Camera . posR = D3DXVECTOR3 ( 1250.0f , 0.0f , 1000.0f ) ;
 	m_Camera . vecU = D3DXVECTOR3 ( 0.0f , 1.0f , 0.0f ) ;
 	m_Camera . fDistance = sqrtf ( ( m_Camera . posV . x * m_Camera . posV . x ) +  ( m_Camera . posV . z * m_Camera . posV . z ) ) ;
@@ -200,8 +200,8 @@ void CCamera::Update(void)
 	{
 		m_Camera . rot . y += 0.05 ;
 	}
-	m_Camera . posV .x = m_Camera . posR .x - sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-	m_Camera . posV .z = m_Camera . posR .z - cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//m_Camera . posV .x = m_Camera . posR .x - sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//m_Camera . posV .z = m_Camera . posR .z - cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
 
 	/*’Ž‹“_‘€ì*/
 	if ( Input->GetKeyboardPress ( DIK_J ) )
