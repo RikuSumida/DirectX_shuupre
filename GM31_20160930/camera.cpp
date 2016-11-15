@@ -46,7 +46,7 @@ void CCamera:: Init ( void )
 	LPDIRECT3DDEVICE9 pDevice = Renderer ->GetDevice();
 
 	//ÉJÉÅÉâê›íË
-	m_Camera . posV = D3DXVECTOR3 ( 1250.0f , 1000.0f , -600.0f ) ;
+	m_Camera . posV = D3DXVECTOR3 ( 1250.0f , 1000.0f , -800.0f ) ;
 	m_Camera . posR = D3DXVECTOR3 ( 1250.0f , 0.0f , 1000.0f ) ;
 	m_Camera . vecU = D3DXVECTOR3 ( 0.0f , 1.0f , 0.0f ) ;
 	m_Camera . fDistance = sqrtf ( ( m_Camera . posV . x * m_Camera . posV . x ) +  ( m_Camera . posV . z * m_Camera . posV . z ) ) ;
