@@ -115,7 +115,7 @@ HRESULT CEnemy:: Init ( void )
 	//pVtx [ 3 ].tex = D3DXVECTOR2 ( 1 , 1 ) ;
 	///*‰ð•ú*/
 	//m_pVtxBuffPolygon  ->Unlock ( ) ;
-	m_Position = D3DXVECTOR3 ( rand()%3500 , 0 , rand()%3500 ) ;
+	m_Position = D3DXVECTOR3 ( rand()%2000 , 0 , rand()%2000 ) ;
 	//m_Vec1 = D3DXVECTOR3(rand()%5,0,rand()%5);
 	EnemyLength =  rand()%100;
 	return S_OK ;
@@ -319,10 +319,11 @@ void CEnemy::Update(void)
 	//ˆÚ“®—Ê‰ÁŽZ
 	m_Position += m_Vec1*4 ;
 
+
 	//¢ŠE‚Ì‹«ŠE
 	if (Field->LimitField(m_Position) == true )
 	{
-		m_Position += -(m_Vec1*7);
+		m_Position += -(m_Vec1*10);
 	}
 
 	//Žû—e
