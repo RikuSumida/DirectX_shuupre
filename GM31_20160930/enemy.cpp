@@ -115,7 +115,7 @@ HRESULT CEnemy:: Init ( void )
 	//pVtx [ 3 ].tex = D3DXVECTOR2 ( 1 , 1 ) ;
 	///*解放*/
 	//m_pVtxBuffPolygon  ->Unlock ( ) ;
-	m_Position = D3DXVECTOR3 ( rand()%2000 , 0 , rand()%2000 ) ;
+	m_Position = D3DXVECTOR3 ( rand()%1500 , 0 , rand()%1500 ) ;
 	//m_Vec1 = D3DXVECTOR3(rand()%5,0,rand()%5);
 	EnemyLength =  rand()%100;
 	return S_OK ;
@@ -412,33 +412,6 @@ void CEnemy:: Draw ( void )
 
 
 
-	///*頂点バッファをデータストリームにバインド*/
-	//pDevice  ->SetStreamSource ( 0 , m_pVtxBuffPolygon , 0 , sizeof ( VERTEX_3D ) ) ;
-	///*ポリゴン描画*/
-	///*頂点フォーマットの設定*/
-	//pDevice ->SetFVF ( FVF_VERTEX_3D ) ;
-	///*テクスチャの設定*/
-	//pDevice  ->SetTexture ( 0 , m_pTexturePolygon ) ;
-
-	//pDevice ->SetRenderState ( D3DRS_ALPHATESTENABLE , TRUE ) ;
-	//pDevice ->SetRenderState ( D3DRS_ALPHAFUNC , D3DCMP_GREATER ) ;
-	//pDevice ->SetRenderState ( D3DRS_ALPHAREF , 30 ) ;
-
-
-	///*ポリゴン描画*/
-	///******************************ポリゴンの種類****描画するプリミティブ数**データの先頭アドレス**データ間隔*/
-	////if(m_Use == true)
-	////{
-	////	pDevice ->DrawPrimitive ( D3DPT_TRIANGLESTRIP  , 0 , PRIMITIVE ) ;
-	////}
-
-	//pDevice ->SetRenderState ( D3DRS_ALPHATESTENABLE , FALSE ) ;
-	//pDevice ->SetRenderState ( D3DRS_ALPHAFUNC , D3DCMP_ALWAYS ) ;
-	//pDevice ->SetRenderState ( D3DRS_ALPHAREF , 0 ) ;
-	////pDevice ->SetRenderState ( D3DRS_CULLMODE , D3DCULL_CCW ) ;
-	////pDevice ->SetRenderState ( D3DRS_ALPHABLENDENABLE , TRUE ) ;
-	////pDevice ->SetRenderState ( D3DRS_SRCBLEND , D3DBLEND_SRCALPHA ) ;
-	////pDevice ->SetRenderState ( D3DRS_DESTBLEND , D3DBLEND_INVSRCALPHA ) ;
 
 
 }

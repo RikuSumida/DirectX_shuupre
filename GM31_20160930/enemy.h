@@ -16,7 +16,7 @@
 //最短距離
 #define ENEMY_DISTANCE (50.0f)
 //プレイヤーとの距離
-#define PLAYER_DISTANCE (300.0f)
+#define PLAYER_DISTANCE (100.0f)
 //敵のゴール距離
 #define ENEMY_GATE (150.0f)
 
