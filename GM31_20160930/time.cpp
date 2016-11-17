@@ -185,7 +185,7 @@ void CTime::Update(void)
 	}
 	if(m_time <= 0)
 	{
-		CFade::Start(new CResult);
+		//CFade::Start(new CResult);
 		
 	}
 	m_TimeValue = m_time ;
