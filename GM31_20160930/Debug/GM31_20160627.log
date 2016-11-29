@@ -1,9 +1,7 @@
-﻿  time.cpp
+﻿  gate.cpp
 d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
 d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
-d:\shuupure\gm31_20160930\time.cpp(195): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\shuupure\gm31_20160930\time.cpp(217): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\time.cpp(221): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\gate.cpp(62): warning C4101: 'pVtx': unreferenced local variable
   GM31_20160627.vcxproj -> D:\shuupure\GM31_20160930\Debug\GM31_20160627.exe
