@@ -241,7 +241,7 @@ void CEnemy::Update(void)
 	{
 		enemy = game->GetEnemy(i);
 		m_change = enemy->GetPosition();
-		if(m_change != m_Position )
+		if(m_change != m_Position && enemy->GetUse() == true)
 		{
 			m_change = m_change - m_Position;
 			//距離
@@ -302,6 +302,7 @@ void CEnemy::Update(void)
 	{
 		enemy = game->GetEnemy(i);
 		m_center += enemy->GetPosition();
+	
 	}
 	//center.x = center.x/ENEMY_MAX;
 	//center.y = center.y/ENEMY_MAX;
@@ -407,8 +408,10 @@ void CEnemy:: Draw ( void )
 	/*ワールドマトリクスの設定*/
 		
 	pDevice -> SetTransform ( D3DTS_WORLD , & m_mtxWorld ) ;
-
-	m_model->Draw();
+	if (m_Use == true)
+	{
+		m_model->Draw();
+	}
 
 
 
