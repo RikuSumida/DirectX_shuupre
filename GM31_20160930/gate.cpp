@@ -30,7 +30,7 @@ CGate::CGate(int Priority)
 
 
 	
-	m_Position = D3DXVECTOR3 ( 2500 , -50 , 50 ) ;
+	m_Position = D3DXVECTOR3 ( 750 , 0 , 1400 ) ;
 	m_Rotation = D3DXVECTOR3 ( 0 , 0 , 0 ) ;
 	m_EnemyCnt =0;
 	m_Color = D3DXCOLOR(1.0f,1.0f,1.0f,1.0f);
