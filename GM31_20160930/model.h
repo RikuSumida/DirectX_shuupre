@@ -41,6 +41,10 @@ private:
 	D3DXVECTOR3 m_Position;
 	D3DXVECTOR3 m_Rotation;
 
+	D3DMATERIAL9		*m_pMeshMat;
+	LPDIRECT3DTEXTURE9	*m_pMeshTex;
+
+
 	CModel *m_Parent;
 
 public :

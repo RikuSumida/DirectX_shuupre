@@ -64,6 +64,28 @@ HRESULT CModel:: Init ( const char *filename , CModel* parent )
 	{
 		return E_FAIL ;
 	}
+	// マテリアル情報を取り出す
+	D3DXMATERIAL *d3Mat = (D3DXMATERIAL*)m_pBuffMat->GetBufferPointer();
+
+	m_pMeshMat = new D3DMATERIAL9[m_numMat];		// メッシュ情報
+	m_pMeshTex = new LPDIRECT3DTEXTURE9[m_numMat];// テクスチャを確保
+
+	for (int i = 0; (unsigned)i < m_numMat; i++)
+	{
+		m_pMeshMat[i] = d3Mat[i].MatD3D;					// マテリアル情報セット
+		m_pMeshMat[i].Ambient = m_pMeshMat[i].Diffuse;	// 環境光初期化
+		m_pMeshTex[i] = NULL;								// テクスチャ初期化
+
+															// 使用しているテクスチャがあれば読み込む
+		if (d3Mat[i].pTextureFilename != NULL && lstrlen(d3Mat[i].pTextureFilename) > 0)
+		{
+			// テクスチャ読み込み
+			if ((D3DXCreateTextureFromFile(pDevice, d3Mat[i].pTextureFilename, &m_pMeshTex[i])))
+			{
+				MessageBox(0, "テクスチャ読み込み＠Objects", "エラー", MB_OK);
+			}
+		}
+	}
 
 	m_Parent = parent;
 	return S_OK ;
@@ -192,13 +214,19 @@ void CModel:: Draw ( void )
 
 	pMat = ( D3DXMATERIAL * ) m_pBuffMat ->GetBufferPointer (  ) ;
 
-	for ( int nCntMat = 0 ; nCntMat < ( int ) m_numMat ; nCntMat ++ )
+	for (int nCntMat = 0; nCntMat < (int)m_numMat; nCntMat++)
 	{
-		pDevice ->SetMaterial ( & pMat [ nCntMat ] .MatD3D ) ;
-		pDevice ->SetTexture ( NULL , 0 ) ;
-		m_pMesh ->DrawSubset ( nCntMat ) ;
-	}
-	/*マテリアルを元に戻す*/
-	pDevice ->SetMaterial( & matDef ) ;
+		// マテリアルの設定
+		//device -> SetMaterial( &pMat[ nCntMat ].MatD3D );
+		pDevice->SetMaterial(&m_pMeshMat[nCntMat]);
 
+		//テクスチャ設定	//マルチテクスチャ
+		pDevice->SetTexture(0, m_pMeshTex[nCntMat]);
+
+		// メッシュの描画
+		m_pMesh->DrawSubset(nCntMat);
+	}
+
+	// マテリアル情報を元に戻す
+	pDevice->SetMaterial(&matDef);
 }
