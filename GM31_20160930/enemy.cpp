@@ -70,6 +70,7 @@ HRESULT CEnemy:: Init ( void )
 	//モデル読み込み
 	m_model->Init("data/MODEL/Sheep.x",NULL);
 
+
 	///*テクスチャの読み込み*/
 	//D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/seep.png" , & m_pTexturePolygon ) ;
 	//for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
@@ -229,6 +230,7 @@ void CEnemy::Update(void)
 	//////////////////////////boids
 	
 	CEnemy* enemy;
+	m_LastPosition = m_Position;
 
 	float Length;
 
@@ -243,16 +245,19 @@ void CEnemy::Update(void)
 		m_change = enemy->GetPosition();
 		if(m_change != m_Position )
 		{
-			m_change = m_change - m_Position;
-			//距離
-			Length = D3DXVec3Length(&m_change);
-			if (Length < EnemyLength)
+			if (enemy->GetUse() == true)
 			{
-				
-				D3DXVec3Normalize(&m_change, &m_change);
-				//D3DXVec3Length(&m_change);
+				m_change = m_change - m_Position;
+				//距離
+				Length = D3DXVec3Length(&m_change);
+				if (Length < EnemyLength)
+				{
 
-				m_Vec1 += -m_change ;
+					D3DXVec3Normalize(&m_change, &m_change);
+					//D3DXVec3Length(&m_change);
+
+					m_Vec1 += -m_change;
+				}
 			}
 			m_change = PlayerPos - m_Position;
 			//プレイヤー
@@ -302,6 +307,7 @@ void CEnemy::Update(void)
 	{
 		enemy = game->GetEnemy(i);
 		m_center += enemy->GetPosition();
+	
 	}
 	//center.x = center.x/ENEMY_MAX;
 	//center.y = center.y/ENEMY_MAX;
@@ -339,6 +345,18 @@ void CEnemy::Update(void)
 	if (Length < ENEMY_GATE)
 	{
 		m_Use = false;
+	}
+
+	//向いている方向を合わせる
+	//小さな変化は無視する
+	float LastSheepRot = m_Rotation.y;
+	//変化量
+	float ConversionQuantity;
+	m_Rotation.y = atan2f(m_LastPosition.z-m_Position.z, m_LastPosition.x - m_Position.x);
+	ConversionQuantity = fabs(fabs(m_Rotation.y) - fabs(LastSheepRot));
+	if (ConversionQuantity < 0.01)
+	{
+		//m_Rotation.y = LastSheepRot;
 	}
 
 
@@ -407,8 +425,10 @@ void CEnemy:: Draw ( void )
 	/*ワールドマトリクスの設定*/
 		
 	pDevice -> SetTransform ( D3DTS_WORLD , & m_mtxWorld ) ;
-
-	m_model->Draw();
+	if (m_Use == true)
+	{
+		m_model->Draw();
+	}
 
 
 

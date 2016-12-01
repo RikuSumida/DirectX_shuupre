@@ -71,6 +71,8 @@ HRESULT CGate:: Init ( void )
 		return E_FAIL ;
 	}
 
+	m_tmpMat = (D3DXMATERIAL *)m_pBuffMat->GetBufferPointer();
+
 	return S_OK ;
 
 }
@@ -142,6 +144,12 @@ void CGate::Update(void)
 			m_tmpMat->MatD3D.Diffuse = m_Color;
 			CaptureNum ++;
 			//CSoundGL::Start(SOUND_LABEL_SE_OBJECT);
+		}
+		else
+		{
+			m_Color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+			m_tmpMat->MatD3D.Diffuse = m_Color;
+
 		}
 
 		

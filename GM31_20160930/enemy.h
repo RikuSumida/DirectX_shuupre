@@ -50,6 +50,10 @@ protected:
 	//“GŠÔ‚ÌŠÔŠu
 	float EnemyLength;
 	bool m_Use;
+	//‘O‰ñ‚ÌÀ•W
+	D3DXVECTOR3 m_LastPosition;
+
+
 
 
 
