@@ -19,6 +19,8 @@
 #define PLAYER_DISTANCE (100.0f)
 //“G‚ÌƒS[ƒ‹‹——£
 #define ENEMY_GATE (150.0f)
+//–å‚ğ”ğ‚¯‚é‹——£
+#define AVOID_GATE (300.0f)
 
 
 /*******************************************************************************
@@ -50,9 +52,12 @@ protected:
 	//“GŠÔ‚ÌŠÔŠu
 	float EnemyLength;
 	bool m_Use;
+	//’Ç‚í‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©
+	bool m_Tracking;
 	//‘O‰ñ‚ÌÀ•W
 	D3DXVECTOR3 m_LastPosition;
-
+	//ŒQ‚ê‚Ì’†S
+	D3DXVECTOR3 m_Sheepcenter,m_LastSheepcenter,m_centerNor;
 
 
 

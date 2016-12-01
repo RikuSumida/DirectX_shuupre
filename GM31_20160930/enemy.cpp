@@ -228,6 +228,14 @@ void CEnemy::Update(void)
 		//m_Position.x  += 10.0f * sin(D3DX_PI*m_Rot);
 	}
 	//////////////////////////boids
+
+	//–å
+	CGate* gate;
+	D3DXVECTOR3 Gatepos;
+	gate = game->GetGate();
+	Gatepos = gate->GetPosition();
+
+
 	
 	CEnemy* enemy;
 	m_LastPosition = m_Position;
@@ -271,6 +279,29 @@ void CEnemy::Update(void)
 				m_Vec1 += -m_change*0.1 ;
 
 			}
+			if (Length < PLAYER_DISTANCE+100.0f)
+			{
+				m_Tracking = true;
+
+			}
+			else
+			{
+				m_Tracking = false;
+			}
+			//–å
+			if (m_Tracking == false)
+			{
+				m_change = Gatepos - m_Position;
+				Length = D3DXVec3Length(&m_change);
+				if (Length < AVOID_GATE)
+				{
+					D3DXVec3Normalize(&m_change, &m_change);
+
+					m_Vec1 += -m_change*0.1;
+
+				}
+			}
+
 
 		}
 	}
@@ -303,6 +334,8 @@ void CEnemy::Update(void)
 
 	//‰Šú‰»
 	m_center = D3DXVECTOR3(0,0,0);
+	m_LastSheepcenter = m_Sheepcenter;
+
 	for(int i = 0; i<ENEMY_MAX;i++)
 	{
 		enemy = game->GetEnemy(i);
@@ -315,14 +348,14 @@ void CEnemy::Update(void)
 	m_center /= ENEMY_MAX;
 
 	//ŠeŒÂ‘Ì‚ÍŒQ‚ê‚Ì’†S‚ÖˆÚ“®‚µ‚æ‚¤‚Æ‚·‚é
-	m_change = m_center - m_Position;
-	
-	D3DXVec3Normalize(&m_change, &m_change);
+	m_Sheepcenter = m_center - m_Position;
+
+	D3DXVec3Normalize(&m_centerNor, &m_Sheepcenter);
 	//D3DXVec3Length(&m_change);
-	m_Vec1 += m_change;
+	m_Vec1 += m_centerNor;
 
 
-	//ˆÚ“®—Ê‰ÁŽZ
+	////ˆÚ“®—Ê‰ÁŽZ
 	m_Position += m_Vec1*4 ;
 
 
@@ -331,30 +364,24 @@ void CEnemy::Update(void)
 	{
 		m_Position += -(m_Vec1*10);
 	}
-
 	//Žû—e
-	CGate* gate;
-	D3DXVECTOR3 Gatepos;
-	gate = game->GetGate();
-	Gatepos = gate->GetPosition();
-
 	m_change = Gatepos - m_Position;
-
-	//‹——£
 	Length = D3DXVec3Length(&m_change);
 	if (Length < ENEMY_GATE)
 	{
 		m_Use = false;
 	}
 
+
 	//Œü‚¢‚Ä‚¢‚é•ûŒü‚ð‡‚í‚¹‚é
-	//¬‚³‚È•Ï‰»‚Í–³Ž‹‚·‚é
-	float LastSheepRot = m_Rotation.y;
+	float LastSheepRot;
+	LastSheepRot = m_Rotation.y;
 	//•Ï‰»—Ê
 	float ConversionQuantity;
-	m_Rotation.y = atan2f(m_LastPosition.z-m_Position.z, m_LastPosition.x - m_Position.x);
+	ConversionQuantity = atan2f(m_LastPosition.x-m_Position.x, m_LastPosition.z - m_Position.z);
+	m_Rotation.y += (ConversionQuantity - LastSheepRot)*0.5f;
 	ConversionQuantity = fabs(fabs(m_Rotation.y) - fabs(LastSheepRot));
-	if (ConversionQuantity < 0.01)
+	if (ConversionQuantity < 0.1f)
 	{
 		//m_Rotation.y = LastSheepRot;
 	}
