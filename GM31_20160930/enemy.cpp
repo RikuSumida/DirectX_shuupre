@@ -211,22 +211,6 @@ void CEnemy::Update(void)
 	m_Position.y = Field->GetHeight(m_Position);
 
 
-	if ( Shot == true )
-	{
-		Block = Player->GetBlock();
-
-		Hit = Block->Use();
-	}
-	if ( Hit == true )
-	{
-		m_Position.x = PlayerPos .x - sinf ( m_fAnglebillboard + Rot  ) * m_fLengthbillboard ;
-		m_Position.z = PlayerPos .z - sinf ( m_fAnglebillboard + Rot  ) * m_fLengthbillboard ;
-	}
-	else
-	{
-		m_Rot += 0.01f;
-		//m_Position.x  += 10.0f * sin(D3DX_PI*m_Rot);
-	}
 	//////////////////////////boids
 
 	//–å
@@ -378,13 +362,23 @@ void CEnemy::Update(void)
 	LastSheepRot = m_Rotation.y;
 	//•Ï‰»—Ê
 	float ConversionQuantity;
-	ConversionQuantity = atan2f(m_LastPosition.x-m_Position.x, m_LastPosition.z - m_Position.z);
-	m_Rotation.y += (ConversionQuantity - LastSheepRot)*0.5f;
-	ConversionQuantity = fabs(fabs(m_Rotation.y) - fabs(LastSheepRot));
-	if (ConversionQuantity < 0.1f)
+	//ConversionQuantity = atan2f(m_LastPosition.x-m_Position.x, m_LastPosition.z - m_Position.z);
+	ConversionQuantity = atan2f(m_Position.x - m_LastPosition.x, m_Position.z - m_LastPosition.z);
+	if (ConversionQuantity - LastSheepRot < -D3DX_PI)
 	{
-		//m_Rotation.y = LastSheepRot;
+		m_Rotation.y = LastSheepRot;
 	}
+	else
+	{
+		m_Rotation.y = (ConversionQuantity - LastSheepRot)*0.3f;
+
+	}
+
+	////ConversionQuantity = fabs(fabs(m_Rotation.y) - fabs(LastSheepRot));
+	////if (ConversionQuantity < 0.1f)
+	////{
+	////	m_Rotation.y = LastSheepRot;
+	////}
 
 
 
