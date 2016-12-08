@@ -144,6 +144,9 @@
     <ClCompile Include="sceneX.cpp">
       <Filter>ソース ファイル\game\object</Filter>
     </ClCompile>
+    <ClCompile Include="fence.cpp">
+      <Filter>ソース ファイル\game\object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="al.h">
@@ -243,6 +246,9 @@
       <Filter>ヘッダー ファイル\scenes</Filter>
     </ClInclude>
     <ClInclude Include="sceneX.h">
+      <Filter>ヘッダー ファイル\game\object</Filter>
+    </ClInclude>
+    <ClInclude Include="fence.h">
       <Filter>ヘッダー ファイル\game\object</Filter>
     </ClInclude>
   </ItemGroup>
