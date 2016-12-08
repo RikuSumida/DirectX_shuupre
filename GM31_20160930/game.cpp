@@ -5,6 +5,7 @@
 *******************************************************************************/
 #include "main.h"
 #include "game.h"
+#include "fence.h"
 /*******************************************************************************
 *
 *	マクロ定義
@@ -34,7 +35,7 @@ CGame::~CGame()
 {
 }
 
-//更新
+//初期化
 void CGame::Init(void)
 {
 	m_Camera = new CCamera;
@@ -54,6 +55,7 @@ void CGame::Init(void)
 	//CScene3D::Create();	
 	m_Player = CSceneX::Create();
 	m_Gate = CGate::Create();
+	CFence::Create();
 	CTime::Create();
 	CScene2D::Create();
 	CSoundGL::Init();
@@ -63,7 +65,7 @@ void CGame::Init(void)
 
 
 }
-//描画
+//終了
 void CGame::Uninit(void)
 {
 	m_Camera ->Uninit();
