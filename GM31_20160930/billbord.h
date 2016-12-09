@@ -8,9 +8,9 @@
 
 //マクロ定義
 /*ポリゴンの幅の半分*/
-#define billboard_WIDTH ( 50.0f / 2 )
+#define billboard_WIDTH ( 300.0f / 2 )
 /*ポリゴンの高さの半分*/
-#define billboard_HEIGHT ( 50.0f / 2 )
+#define billboard_HEIGHT ( 300.0f / 2 )
 
 
 /*******************************************************************************

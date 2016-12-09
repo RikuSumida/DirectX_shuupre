@@ -504,6 +504,10 @@ bool CMeshfield::LimitField(D3DXVECTOR3 Pos)
 	{
 		return true;
 	}
+	else
+	{
+		return false;
+	}
 }
 
 /*******************************************************************************

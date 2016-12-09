@@ -149,11 +149,15 @@ void CGate::Update(void)
 		{
 			m_Color = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 			m_tmpMat->MatD3D.Diffuse = m_Color;
-
+			
 		}
 
 		
 
+	}
+	if (m_EnemyCnt >= ENEMY_MAX)
+	{
+		CFade::Start(new CResult);
 	}
 }
 int GetEnemyNum (void)

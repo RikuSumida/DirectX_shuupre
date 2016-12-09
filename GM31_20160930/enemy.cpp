@@ -4,6 +4,7 @@
 *
 *******************************************************************************/
 #include "main.h"
+#include "effect.h"
 /*******************************************************************************
 *
 *	マクロ定義
@@ -118,7 +119,7 @@ HRESULT CEnemy:: Init ( void )
 	//m_pVtxBuffPolygon  ->Unlock ( ) ;
 	m_Position = D3DXVECTOR3 ( rand()%1500 , 0 , rand()%1500 ) ;
 	//m_Vec1 = D3DXVECTOR3(rand()%5,0,rand()%5);
-	EnemyLength =  rand()%100;
+	EnemyLength = 10 + rand()%100;
 	return S_OK ;
 
 }
@@ -230,7 +231,8 @@ void CEnemy::Update(void)
 	//引き離し
 	//&プレイヤーとのあたり判定
 	PlayerPos = game->GetPlayer()->GetPosition();
-
+	Shot = Player->GetShot();
+	int ShotLength = 0;
 	for(int i = 0; i<ENEMY_MAX;i++)
 	{
 		enemy = game->GetEnemy(i);
@@ -255,15 +257,18 @@ void CEnemy::Update(void)
 			//プレイヤー
 			//距離
 			Length = D3DXVec3Length(&m_change);
-
-			if(Length < PLAYER_DISTANCE)
+			if (Shot == true)
+			{
+				ShotLength = 300;
+			}
+			if(Length < PLAYER_DISTANCE+ ShotLength)
 			{
 				D3DXVec3Normalize(&m_change, &m_change);
 
-				m_Vec1 += -m_change*0.1 ;
+				m_Vec1 += -m_change*0.1f ;
 
 			}
-			if (Length < PLAYER_DISTANCE+100.0f)
+			if (Length < PLAYER_DISTANCE+100.0f+ ShotLength)
 			{
 				m_Tracking = true;
 
@@ -281,7 +286,7 @@ void CEnemy::Update(void)
 				{
 					D3DXVec3Normalize(&m_change, &m_change);
 
-					m_Vec1 += -m_change*0.1;
+					m_Vec1 += -m_change*0.1f;
 
 				}
 			}
@@ -338,22 +343,25 @@ void CEnemy::Update(void)
 	//D3DXVec3Length(&m_change);
 	m_Vec1 += m_centerNor;
 
-
+	D3DXVECTOR3 move = {0.0f,0.0f,0.0f};
 	////移動量加算
-	m_Position += m_Vec1*4 ;
+	move = m_Vec1 * 4;
+	//m_Position += (move - m_Position)*0.8f;
+	m_Position += move;
 
 
 	//世界の境界
 	if (Field->LimitField(m_Position) == true )
 	{
-		m_Position += -(m_Vec1*10);
+		m_Position += (m_Vec1*-10);
 	}
 	//収容
 	m_change = Gatepos - m_Position;
 	Length = D3DXVec3Length(&m_change);
-	if (Length < ENEMY_GATE)
+	if (Length < ENEMY_GATE && m_Use == true)
 	{
 		m_Use = false;
+		CEffect::Create("data/TEXTURE/explosion000.png",8,1,m_Position);
 	}
 
 
@@ -364,22 +372,15 @@ void CEnemy::Update(void)
 	float ConversionQuantity;
 	//ConversionQuantity = atan2f(m_LastPosition.x-m_Position.x, m_LastPosition.z - m_Position.z);
 	ConversionQuantity = atan2f(m_Position.x - m_LastPosition.x, m_Position.z - m_LastPosition.z);
-	if (ConversionQuantity - LastSheepRot < -D3DX_PI)
+	m_Rotation.y += (ConversionQuantity - LastSheepRot)*0.3f;
+	if (m_Rotation.y > D3DX_PI)
 	{
-		m_Rotation.y = LastSheepRot;
+		m_Rotation.y = -D3DX_PI + (D3DX_PI - m_Rotation.y);
 	}
-	else
+	else if (m_Rotation.y < -D3DX_PI)
 	{
-		m_Rotation.y = (ConversionQuantity - LastSheepRot)*0.3f;
-
+		m_Rotation.y = -D3DX_PI - (D3DX_PI + m_Rotation.y);
 	}
-
-	////ConversionQuantity = fabs(fabs(m_Rotation.y) - fabs(LastSheepRot));
-	////if (ConversionQuantity < 0.1f)
-	////{
-	////	m_Rotation.y = LastSheepRot;
-	////}
-
 
 
 

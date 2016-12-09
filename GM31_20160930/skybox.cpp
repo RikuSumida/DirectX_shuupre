@@ -439,6 +439,7 @@ void CSky:: Draw ( void )
 		/******************************ポリゴンの種類****描画するプリミティブ数**データの先頭アドレス**データ間隔*/
 		/*************************プリミティブの種類*******************頂点数*****描画するプリミティブ数*/
 		pDevice ->DrawIndexedPrimitive ( D3DPT_TRIANGLESTRIP  , 0 , 0 , m_pointCnt , 0, m_FaceCnt ) ;
+		pDevice->SetRenderState(D3DRS_CULLMODE, D3DCULL_CCW);
 
 	}
 	/*ライトを有効にする*/

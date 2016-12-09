@@ -6,6 +6,7 @@
 #include "main.h"
 #include "game.h"
 #include "fence.h"
+#include "effect.h"
 /*******************************************************************************
 *
 *	É}ÉNÉçíËã`
@@ -47,7 +48,7 @@ void CGame::Init(void)
 	m_Mesh = CMeshfield::Create();
 	CSky::Create();
 
-	m_Billbord = CBillbord::Create();
+	//m_Billbord = CBillbord::Create();
 	for (int i = 0 ;i<ENEMY_MAX;i++)
 	{
 		m_Enemy[i] = CEnemy::Create();
@@ -62,6 +63,7 @@ void CGame::Init(void)
 	CSoundGL::Load();
 
 	CSoundGL::Start(SOUND_LABEL_BGM000);
+	
 
 
 }

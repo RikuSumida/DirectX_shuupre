@@ -12,6 +12,7 @@
 *
 *******************************************************************************/
 #include "main.h"
+#include "effect.h"
 /*******************************************************************************
 *
 *	マクロ定義
@@ -178,6 +179,7 @@ CSceneX::CSceneX(int Priority):CScene(Priority)
 	m_Position = D3DXVECTOR3 ( 500 , 0 , 500 ) ;
 	m_Rotation = D3DXVECTOR3 ( 0 , 0 , 0 ) ;
 	m_Speed = 5;
+	m_Cnt = 0;
 
 }
 //デストラクタ
@@ -391,9 +393,18 @@ void CSceneX::Update(void)
 	{
 		SetAnim (MOTIONTYPE_WALK);
 	}
-	if ( Input->GetKeyboardTrigger ( DIK_3 ) )
+	if ( Input->GetKeyboardTrigger ( DIK_SPACE ) )
 	{
+		m_Shot = true;
 		SetAnim (MOTIONTYPE_PANCH);
+		m_Cnt = 0;
+		//CEffect::Create("data/TEXTURE/explosion000.png", 8, 1, m_Position);
+	}
+	m_Cnt++;
+	if (m_Shot == true && m_Cnt > 100)
+	{
+		m_Shot = false;
+		SetAnim(MOTIONTYPE_WALK);
 	}
 
 
