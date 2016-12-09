@@ -147,6 +147,12 @@
     <ClCompile Include="fence.cpp">
       <Filter>ソース ファイル\game\object</Filter>
     </ClCompile>
+    <ClCompile Include="effect.cpp">
+      <Filter>ソース ファイル\game\object</Filter>
+    </ClCompile>
+    <ClCompile Include="score.cpp">
+      <Filter>ソース ファイル\result</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="al.h">
@@ -250,6 +256,12 @@
     </ClInclude>
     <ClInclude Include="fence.h">
       <Filter>ヘッダー ファイル\game\object</Filter>
+    </ClInclude>
+    <ClInclude Include="effect.h">
+      <Filter>ヘッダー ファイル\game\object</Filter>
+    </ClInclude>
+    <ClInclude Include="score.h">
+      <Filter>ヘッダー ファイル\result</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

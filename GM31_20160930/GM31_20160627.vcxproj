@@ -87,6 +87,7 @@
     <ClCompile Include="block.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="debugProc.cpp" />
+    <ClCompile Include="effect.cpp" />
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="fence.cpp" />
@@ -107,6 +108,7 @@
     <ClCompile Include="scene2D.cpp" />
     <ClCompile Include="scene3D.cpp" />
     <ClCompile Include="sceneX.cpp" />
+    <ClCompile Include="score.cpp" />
     <ClCompile Include="skybox.cpp" />
     <ClCompile Include="soundGL.cpp" />
     <ClCompile Include="time.cpp" />
@@ -122,6 +124,7 @@
     <ClInclude Include="block.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="debugProc.h" />
+    <ClInclude Include="effect.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="fade.h" />
     <ClInclude Include="fence.h" />
@@ -143,6 +146,7 @@
     <ClInclude Include="scene2D.h" />
     <ClInclude Include="scene3D.h" />
     <ClInclude Include="sceneX.h" />
+    <ClInclude Include="score.h" />
     <ClInclude Include="skybox.h" />
     <ClInclude Include="soundGL.h" />
     <ClInclude Include="time.h" />

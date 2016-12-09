@@ -25,7 +25,7 @@
 #define POLYGON_HEIGHT ( 50 / 2 )
 /*スコアの桁数*/
 #define Time_NUM ( 4 )
-#define TIME ( 60 )
+#define TIME ( 5 )
 
 
 /*******************************************************************************
@@ -40,7 +40,7 @@
 *******************************************************************************/
 class CTime : public CScene2D
 {
-private:
+protected:
 	/*頂点バッファへのポインタ*/
 	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuffPolygon[Time_NUM];
 	/*ポリゴンの位置*/

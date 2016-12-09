@@ -61,7 +61,7 @@ HRESULT CBillbord:: Init ( void )
 
 
 	/*テクスチャの読み込み*/
-	D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/dog.png" , & m_pTexturePolygon ) ;
+	D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/explosion000.png" , & m_pTexturePolygon ) ;
 	for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
 	{
 		/*頂点バッファの生成*                        確保するバッファサイズ                         使用する頂点フォーマット*/
@@ -74,10 +74,10 @@ HRESULT CBillbord:: Init ( void )
 	/*メモリ確保*/
 	m_pVtxBuffPolygon  ->Lock ( 0 , 0 , ( void** ) & pVtx , 0 ) ;
 	pVtx [ 0 ].pos .x = m_Position .x - sinf ( m_fAnglebillboard + m_Rotation .z  ) * m_fLengthbillboard ;
-	pVtx [ 0 ].pos .y = 50.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
+	pVtx [ 0 ].pos .y = 300.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
 	pVtx [ 0 ].pos .z = 0.0f ;
 	pVtx [ 1 ].pos .x = m_Position .x + sinf ( m_fAnglebillboard + m_Rotation .z  ) * m_fLengthbillboard ;
-	pVtx [ 1 ].pos .y = 50.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
+	pVtx [ 1 ].pos .y = 300.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
 	pVtx [ 1 ].pos .z = 0.0f ;
 	pVtx [ 2 ].pos .x = m_Position .x - sinf ( m_fAnglebillboard - m_Rotation .z  ) * m_fLengthbillboard ;
 	pVtx [ 2 ].pos .y = 0;//g_posbillboard .y + cosf ( g_fAnglebillboard - g_rotbillboard .z  ) * g_fLengthbillboard ;
@@ -99,13 +99,13 @@ HRESULT CBillbord:: Init ( void )
 	pVtx [ 2 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
 	pVtx [ 3 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
 	/*テクスチャ座標*******************   U     V   */
-	pVtx [ 0 ].tex = D3DXVECTOR2 ( 0.0f , 0.0f ) ;
-	pVtx [ 1 ].tex = D3DXVECTOR2 ( 1 , 0.0f ) ;
-	pVtx [ 2 ].tex = D3DXVECTOR2 ( 0.0f , 1 ) ;
-	pVtx [ 3 ].tex = D3DXVECTOR2 ( 1 , 1 ) ;
+	pVtx [ 0 ].tex = D3DXVECTOR2 ( 0.125f , 0.0f ) ;
+	pVtx [ 1 ].tex = D3DXVECTOR2 ( 0.25 , 0.0f ) ;
+	pVtx [ 2 ].tex = D3DXVECTOR2 ( 0.125f , 1 ) ;
+	pVtx [ 3 ].tex = D3DXVECTOR2 ( 0.25 , 1 ) ;
 	/*解放*/
 	m_pVtxBuffPolygon  ->Unlock ( ) ;
-	m_Position = D3DXVECTOR3 ( 1500 , 0 , 1500 ) ;
+	m_Position = D3DXVECTOR3 ( 750 , 100 , 750 ) ;
 	return S_OK ;
 
 }
@@ -203,7 +203,7 @@ void CBillbord::Update(void)
 	else
 	{
 		m_Rot += 0.01f;
-		m_Position.x  += 30.0f * sin(D3DX_PI*m_Rot);
+		//m_Position.x  += 30.0f * sin(D3DX_PI*m_Rot);
 	}
 
 	//PrintDebugProc("エネミーX座標：%f  Y座標:%f  Z座標%f",m_Position.x,m_Position.y,m_Position.z);

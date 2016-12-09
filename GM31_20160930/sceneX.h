@@ -68,6 +68,7 @@ protected:
 	int m_Speed;
 
 	bool m_Shot;
+	int m_Cnt;
 
 	//ƒ‚[ƒVƒ‡ƒ“ŠÖ˜A
 	MOTIONTYPE m_MotionType;
