@@ -15,7 +15,8 @@
 *
 *******************************************************************************/
 CGate* Gate;
-int CaptureNum;
+int m_CaptureNum;
+
 //コンストラクタ
 CGate::CGate(int Priority)
 {
@@ -57,8 +58,8 @@ CGate* CGate::Create(void)
 *******************************************************************************/
 HRESULT CGate:: Init ( void )
 {
-	CaptureNum = 0;
-
+	m_CaptureNum = 0;
+	m_CaptureCnt = 0;
 	VERTEX_3D *pVtx ;
 	CRenderer *Renderer ;
 	Renderer = GetManager ()->GetRenderer();	
@@ -124,7 +125,8 @@ void CGate::Update(void)
 	bool Use;
 	int  OldCnt;
 	OldCnt = m_EnemyCnt;
-
+	m_EnemyCnt = 0;
+	m_CaptureCnt = 0;
 	for (int i = 0 ; i<ENEMY_MAX;i++)
 	{
 
@@ -142,8 +144,8 @@ void CGate::Update(void)
 			m_Color = D3DXCOLOR(1.0f,0.0f,0.0f,1.0f);
 			m_Color.r += 0.01f;
 			m_tmpMat->MatD3D.Diffuse = m_Color;
-			CaptureNum ++;
-			//CSoundGL::Start(SOUND_LABEL_SE_OBJECT);
+			m_CaptureCnt ++;
+			CSoundGL::Start(SOUND_LABEL_SE_OBJECT,FALSE);
 		}
 		else
 		{
@@ -155,14 +157,16 @@ void CGate::Update(void)
 		
 
 	}
-	if (m_EnemyCnt >= ENEMY_MAX)
+	m_CaptureNum = m_EnemyCnt;
+
+	if (m_CaptureNum >= ENEMY_MAX)
 	{
 		CFade::Start(new CResult);
 	}
 }
 int GetEnemyNum (void)
 {
-	return CaptureNum;
+	return m_CaptureNum;
 }
 
 /*******************************************************************************

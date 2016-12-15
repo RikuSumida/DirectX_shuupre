@@ -4,6 +4,7 @@
 *
 *******************************************************************************/
 #include "main.h"
+#include "score.h"
 /*******************************************************************************
 *
 *	マクロ定義
@@ -53,13 +54,16 @@ HRESULT CResultRogo:: Init ( void )
 
 	/*テクスチャの読み込み*/
 	int EnemyCnt = GetEnemyNum();
+	CScore::Create(D3DXVECTOR3(450.0f,350.0f,0.0f), D3DXVECTOR3(200.0f, 350.0f, 0.0f), EnemyCnt);
+	CScore::Create(D3DXVECTOR3(1000.0f, 350.0f, 0.0f), D3DXVECTOR3(800.0f, 350.0f, 0.0f), ENEMY_MAX);
+
 	if(EnemyCnt > 15)
 	{
-		D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/clear.png" , & m_pTexturePolygon ) ;
+		//D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/clear.png" , & m_pTexturePolygon ) ;
 	}
 	else
 	{
-		D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/failed.png" , & m_pTexturePolygon ) ;
+		//D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/failed.png" , & m_pTexturePolygon ) ;
 	}
 	for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
 	{
@@ -85,10 +89,10 @@ HRESULT CResultRogo:: Init ( void )
 	pVtx [ 2 ].rhw = 1.0f ;
 	pVtx [ 3 ].rhw = 1.0f ;
 	/*頂点カラー*/
-	pVtx [ 0 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 100 ) ;
-	pVtx [ 1 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 100 ) ;
-	pVtx [ 2 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 100 ) ;
-	pVtx [ 3 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 100 ) ;
+	pVtx [ 0 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
+	pVtx [ 1 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
+	pVtx [ 2 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
+	pVtx [ 3 ].col = D3DCOLOR_RGBA ( 255 , 255 , 255 , 255 ) ;
 	/*テクスチャ座標*******************   U     V   */
 	pVtx [ 0 ].tex = D3DXVECTOR2 ( 0.0f , 0.0f ) ;
 	pVtx [ 1 ].tex = D3DXVECTOR2 ( 1 , 0.0f ) ;

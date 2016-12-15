@@ -34,10 +34,12 @@ void CSoundGL::Load(void)
 
 	m_buffer[0] = alutCreateBufferFromFile("data/BGM/game.wav");
 	m_buffer[1] = alutCreateBufferFromFile("data/SE/Enemycapture.wav");
+	m_buffer[2] = alutCreateBufferFromFile("data/SE/fue.wav");
+	m_buffer[3] = alutCreateBufferFromFile("data/SE/enter.wav");
 
 }
 //再生
-void CSoundGL::Start(SOUND_LABEL label)
+void CSoundGL::Start(SOUND_LABEL label, bool Loop)
 {
 	int i;
 	// 状態変数
@@ -52,6 +54,16 @@ void CSoundGL::Start(SOUND_LABEL label)
 		if ( state[i] != AL_PLAYING )
 		{
 			alSourcei(m_source[i], AL_BUFFER, m_buffer[label]); // 音データのバッファを指定
+			if (Loop==true)
+			{
+				alSourcei(m_source[i], AL_LOOPING, AL_TRUE); // ループの設定
+
+			}
+			else
+			{
+				alSourcei(m_source[i], AL_LOOPING, AL_FALSE); // ループの設定
+			}
+
 			alSourcePlay(m_source[i]);
 			break;
 

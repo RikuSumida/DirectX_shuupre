@@ -84,6 +84,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="billbord.cpp" />
+    <ClCompile Include="blink.cpp" />
     <ClCompile Include="block.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="debugProc.cpp" />
@@ -91,6 +92,7 @@
     <ClCompile Include="enemy.cpp" />
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="fence.cpp" />
+    <ClCompile Include="fue.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gate.cpp" />
     <ClCompile Include="input.cpp" />
@@ -121,6 +123,7 @@
     <ClInclude Include="alc.h" />
     <ClInclude Include="alut.h" />
     <ClInclude Include="billbord.h" />
+    <ClInclude Include="blink.h" />
     <ClInclude Include="block.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="debugProc.h" />
@@ -128,6 +131,7 @@
     <ClInclude Include="enemy.h" />
     <ClInclude Include="fade.h" />
     <ClInclude Include="fence.h" />
+    <ClInclude Include="fue.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gate.h" />
     <ClInclude Include="input.h" />
