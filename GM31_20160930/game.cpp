@@ -7,6 +7,7 @@
 #include "game.h"
 #include "fence.h"
 #include "effect.h"
+#include "fue.h"
 /*******************************************************************************
 *
 *	ƒ}ƒNƒ’è‹`
@@ -59,10 +60,12 @@ void CGame::Init(void)
 	CFence::Create();
 	CTime::Create();
 	CScene2D::Create();
+	CFue::Create("data/TEXTURE/fue.png", 400.0f, 200.0f, D3DXVECTOR3(450.0f, 500.0f, 0.0f));
+
 	CSoundGL::Init();
 	CSoundGL::Load();
 
-	CSoundGL::Start(SOUND_LABEL_BGM000);
+	CSoundGL::Start(SOUND_LABEL_BGM000,TRUE);
 	
 
 
@@ -92,10 +95,6 @@ void CGame::Update(void)
 	m_Light ->Update();
 
 	CScene::UpdateAll();
-	if (Input->GetKeyboardTrigger(DIK_Q))
-	{
-		CSoundGL::Start(SOUND_LABEL_SE_OBJECT);
-	}
 
 	//if (Input->GetKeyboardTrigger(DIK_RETURN))
 	//{

@@ -1,7 +1,267 @@
-﻿  gate.cpp
+﻿cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+  Orbit.cpp
 d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
 d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
-d:\shuupure\gm31_20160930\gate.cpp(62): warning C4101: 'pVtx': unreferenced local variable
+  billbord.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  blink.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  block.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\block.cpp(97): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\block.cpp(99): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\block.cpp(102): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\block.cpp(104): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\block.cpp(106): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\block.cpp(151): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\block.cpp(228): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\block.cpp(230): warning C4244: '=': conversion from 'float' to 'WORD', possible loss of data
+d:\shuupure\gm31_20160930\block.cpp(234): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\block.cpp(237): warning C4244: '=': conversion from 'float' to 'WORD', possible loss of data
+d:\shuupure\gm31_20160930\block.cpp(370): warning C4305: '+=': truncation from 'double' to 'float'
+d:\shuupure\gm31_20160930\block.cpp(371): warning C4305: '+=': truncation from 'double' to 'float'
+  camera.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\camera.cpp(42): warning C4101: 'pVtx': unreferenced local variable
+d:\shuupure\gm31_20160930\camera.cpp(130): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\camera.cpp(131): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\camera.cpp(141): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\camera.cpp(142): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\camera.cpp(163): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\camera.cpp(164): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\camera.cpp(174): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\camera.cpp(175): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\camera.cpp(196): warning C4305: '-=': truncation from 'double' to 'float'
+d:\shuupure\gm31_20160930\camera.cpp(201): warning C4305: '+=': truncation from 'double' to 'float'
+d:\shuupure\gm31_20160930\camera.cpp(209): warning C4305: '+=': truncation from 'double' to 'float'
+d:\shuupure\gm31_20160930\camera.cpp(214): warning C4305: '-=': truncation from 'double' to 'float'
+  debugProc.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  effect.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\effect.cpp(120): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\effect.cpp(121): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  enemy.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\enemy.cpp(120): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\enemy.cpp(122): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\enemy.cpp(61): warning C4101: 'pVtx': unreferenced local variable
+d:\shuupure\gm31_20160930\enemy.cpp(190): warning C4101: 'Block': unreferenced local variable
+  fade.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  fence.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  fue.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  game.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  gate.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\gate.cpp(63): warning C4101: 'pVtx': unreferenced local variable
+  input.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  light.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  main.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  manager.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  meshfield.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\meshfield.cpp(108): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(110): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(113): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(115): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(117): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(167): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(201): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(238): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(240): warning C4244: '=': conversion from 'float' to 'WORD', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(244): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(247): warning C4244: '=': conversion from 'float' to 'WORD', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(263): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\meshfield.cpp(280): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+  model.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\model.cpp(56): warning C4101: 'pVtx': unreferenced local variable
+  renderer.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  Generating Code...
+  Compiling...
+  result.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\score.h(12): warning C4005: 'POLYGON_WIDTH': macro redefinition
+  d:\shuupure\gm31_20160930\time.h(23): note: see previous definition of 'POLYGON_WIDTH'
+d:\shuupure\gm31_20160930\score.h(14): warning C4005: 'POLYGON_HEIGHT': macro redefinition
+  d:\shuupure\gm31_20160930\time.h(25): note: see previous definition of 'POLYGON_HEIGHT'
+  resultbg.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  resultrogo.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\score.h(12): warning C4005: 'POLYGON_WIDTH': macro redefinition
+  d:\shuupure\gm31_20160930\time.h(23): note: see previous definition of 'POLYGON_WIDTH'
+d:\shuupure\gm31_20160930\score.h(14): warning C4005: 'POLYGON_HEIGHT': macro redefinition
+  d:\shuupure\gm31_20160930\time.h(25): note: see previous definition of 'POLYGON_HEIGHT'
+  scene.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  scene2D.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  scene3D.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  sceneX.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\scenex.cpp(198): warning C4101: 'pVtx': unreferenced local variable
+d:\shuupure\gm31_20160930\scenex.cpp(452): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(460): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(461): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(468): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(471): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(472): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(485): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(491): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(494): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(495): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(502): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(505): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(506): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\scenex.cpp(528): warning C4305: '+=': truncation from 'double' to 'float'
+d:\shuupure\gm31_20160930\scenex.cpp(532): warning C4305: '-=': truncation from 'double' to 'float'
+d:\shuupure\gm31_20160930\scenex.cpp(580): warning C4101: 'matDef': unreferenced local variable
+d:\shuupure\gm31_20160930\scenex.cpp(581): warning C4101: 'pMat': unreferenced local variable
+  score.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\score.h(12): warning C4005: 'POLYGON_WIDTH': macro redefinition
+  d:\shuupure\gm31_20160930\time.h(23): note: see previous definition of 'POLYGON_WIDTH'
+d:\shuupure\gm31_20160930\score.h(14): warning C4005: 'POLYGON_HEIGHT': macro redefinition
+  d:\shuupure\gm31_20160930\time.h(25): note: see previous definition of 'POLYGON_HEIGHT'
+d:\shuupure\gm31_20160930\score.cpp(187): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\score.cpp(209): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\score.cpp(213): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+  skybox.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\skybox.cpp(79): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\skybox.cpp(81): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\skybox.cpp(84): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\skybox.cpp(86): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\skybox.cpp(88): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\skybox.cpp(133): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\skybox.cpp(210): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\skybox.cpp(212): warning C4244: '=': conversion from 'float' to 'WORD', possible loss of data
+d:\shuupure\gm31_20160930\skybox.cpp(216): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+d:\shuupure\gm31_20160930\skybox.cpp(219): warning C4244: '=': conversion from 'float' to 'WORD', possible loss of data
+  soundGL.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  time.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+d:\shuupure\gm31_20160930\time.cpp(195): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\time.cpp(217): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\time.cpp(221): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+  title.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  titlebg.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  titlerogo.cpp
+d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
+  Generating Code...
   GM31_20160627.vcxproj -> D:\shuupure\GM31_20160930\Debug\GM31_20160627.exe

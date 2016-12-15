@@ -52,7 +52,7 @@ HRESULT CScene2D:: Init ( void )
 
 
 	/*テクスチャの読み込み*/
-	D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/tutorial.png" , & m_pTexturePolygon ) ;
+	D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/tutorial1.png" , & m_pTexturePolygon ) ;
 	for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
 	{
 		/*頂点バッファの生成*                        確保するバッファサイズ                         使用する頂点フォーマット*/
@@ -66,9 +66,9 @@ HRESULT CScene2D:: Init ( void )
 	m_pVtxBuffPolygon  ->Lock ( 0 , 0 , ( void** ) & pVtx , 0 ) ;
 	/*頂点座標*/
 	pVtx [ 0 ].pos = D3DXVECTOR3 ( 0.0f , 500.0f ,0.0f ) ;
-	pVtx [ 1 ].pos = D3DXVECTOR3 ( 500.0f , 500.0f ,0.0f ) ;
-	pVtx [ 2 ].pos = D3DXVECTOR3 ( 0.0f , 800.0f ,0.0f ) ;
-	pVtx [ 3 ].pos = D3DXVECTOR3 ( 500.0f , 800.0f ,0.0f ) ;
+	pVtx [ 1 ].pos = D3DXVECTOR3 ( 300.0f , 500.0f ,0.0f ) ;
+	pVtx [ 2 ].pos = D3DXVECTOR3 ( 0.0f , 650.0f ,0.0f ) ;
+	pVtx [ 3 ].pos = D3DXVECTOR3 ( 300.0f , 650.0f ,0.0f ) ;
 
 
 	/*座標変換用関数*/

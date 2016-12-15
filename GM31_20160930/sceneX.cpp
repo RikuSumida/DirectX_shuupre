@@ -201,6 +201,7 @@ HRESULT CSceneX:: Init ( void )
 	LPDIRECT3DDEVICE9 pDevice = Renderer ->GetDevice();
 
 	m_Shot = false;
+	m_fue = false;
 	for (int i = 0 ;i<10 ; i++)
 	{
 		m_Model[i] = new CModel;
@@ -331,6 +332,10 @@ bool CSceneX::GetShot(void)
 {
 	return m_Shot;
 }
+bool CSceneX::GetFue(void)
+{
+	return m_fue;
+}
 
 /*******************************************************************************
 *
@@ -393,19 +398,29 @@ void CSceneX::Update(void)
 	{
 		SetAnim (MOTIONTYPE_WALK);
 	}
-	if ( Input->GetKeyboardTrigger ( DIK_SPACE ) )
-	{
-		m_Shot = true;
-		SetAnim (MOTIONTYPE_PANCH);
-		m_Cnt = 0;
-		//CEffect::Create("data/TEXTURE/explosion000.png", 8, 1, m_Position);
-	}
 	m_Cnt++;
+	if (m_Cnt > 180)
+	{
+		m_fue = true;
+		if (Input->GetKeyboardTrigger(DIK_SPACE))
+		{
+			m_Shot = true;
+			m_fue = false;
+
+			SetAnim(MOTIONTYPE_PANCH);
+			m_Cnt = 0;
+			CEffect::Create("data/TEXTURE/!!.png", 5, 1, D3DXVECTOR3(m_Position.x, m_Position.y+100.0f, m_Position.z));
+			CSoundGL::Start(SOUND_LABEL_SE_FUE,FALSE);
+
+		}
+
+	}
 	if (m_Shot == true && m_Cnt > 100)
 	{
 		m_Shot = false;
 		SetAnim(MOTIONTYPE_WALK);
 	}
+
 
 
 	/*ƒ‚ƒfƒ‹ˆÚ“®*/

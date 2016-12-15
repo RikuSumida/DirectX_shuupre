@@ -29,6 +29,7 @@ private:
 	D3DXMATERIAL* m_tmpMat ;
 	int m_EnemyCnt;
 	D3DXCOLOR  m_Color;
+	int m_CaptureCnt;
 
 
 public :

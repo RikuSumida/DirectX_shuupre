@@ -68,6 +68,7 @@ protected:
 	int m_Speed;
 
 	bool m_Shot;
+	bool m_fue;
 	int m_Cnt;
 
 	//ÉÇÅ[ÉVÉáÉìä÷òA
@@ -93,6 +94,7 @@ public :
 	//D3DXVECTOR3 GetPosition ( void );
 	CBlock* GetBlock (void);
 	bool GetShot(void);
+	bool GetFue(void);
 
 	void SetAnim (MOTIONTYPE MotionType);
 

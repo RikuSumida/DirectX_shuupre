@@ -24,13 +24,15 @@
 *
 *******************************************************************************/
 
-#define SOUND_NUM (2)
+#define SOUND_NUM (3)
 #define SOURCE_NUM (16)
 
 typedef enum
 {
 	SOUND_LABEL_BGM000 = 0,		// BGM0
 	SOUND_LABEL_SE_OBJECT,		// オブジェクト
+	SOUND_LABEL_SE_FUE,         //笛の音
+	SOUND_LABEL_SE_ENTER,       //決定音
 	SOUND_LABEL_MAX,
 } SOUND_LABEL;
 
@@ -61,7 +63,7 @@ public :
 	static void Init ( void );
 	static void Uninit ( void );
 	static void Load (void);
-	static void Start ( SOUND_LABEL label );
+	static void Start ( SOUND_LABEL label,bool Loop );
 	static void Stop ( SOUND_LABEL label );
 
 
