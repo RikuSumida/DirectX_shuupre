@@ -68,7 +68,7 @@ HRESULT CManager :: Init ( HINSTANCE hInstance , HWND hWnd , BOOL bWindow )
 	m_Renderer ->Init(hInstance,hWnd,bWindow);
 
 
-	SetMode(new CTitle);
+	SetMode(new CGame);
 	m_Fade = new CFade;
 	m_Fade ->Init();
 

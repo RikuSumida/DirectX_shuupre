@@ -286,7 +286,7 @@ void CEnemy::Update(void)
 				{
 					D3DXVec3Normalize(&m_change, &m_change);
 
-					m_Vec1 += -m_change*0.1f;
+					m_Vec1 += -m_change;
 
 				}
 			}
@@ -343,7 +343,7 @@ void CEnemy::Update(void)
 	//D3DXVec3Length(&m_change);
 	m_Vec1 += m_centerNor;
 
-	D3DXVECTOR3 move = {0.0f,0.0f,0.0f};
+	D3DXVECTOR3 move = D3DXVECTOR3(0.0f,0.0f,0.0f);
 	////ˆÚ“®—Ê‰ÁŽZ
 	move = m_Vec1 * 4;
 	//m_Position += (move - m_Position)*0.8f;

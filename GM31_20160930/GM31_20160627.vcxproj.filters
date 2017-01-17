@@ -159,6 +159,9 @@
     <ClCompile Include="fue.cpp">
       <Filter>ソース ファイル\game\UI</Filter>
     </ClCompile>
+    <ClCompile Include="gauge.cpp">
+      <Filter>ソース ファイル\game\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="al.h">
@@ -273,6 +276,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="fue.h">
+      <Filter>ヘッダー ファイル\game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="gauge.h">
       <Filter>ヘッダー ファイル\game\UI</Filter>
     </ClInclude>
   </ItemGroup>
