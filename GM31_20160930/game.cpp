@@ -8,6 +8,7 @@
 #include "fence.h"
 #include "effect.h"
 #include "fue.h"
+#include "gauge.h"
 /*******************************************************************************
 *
 *	É}ÉNÉçíËã`
@@ -60,7 +61,8 @@ void CGame::Init(void)
 	CFence::Create();
 	CTime::Create();
 	CScene2D::Create();
-	CFue::Create("data/TEXTURE/fue.png", 400.0f, 200.0f, D3DXVECTOR3(450.0f, 500.0f, 0.0f));
+	CFue::Create("data/TEXTURE/fue2.png", 150.0f, 150.0f, D3DXVECTOR3(700.0f, 500.0f, 0.0f));
+	CGauge::Create();
 
 	CSoundGL::Init();
 	CSoundGL::Load();

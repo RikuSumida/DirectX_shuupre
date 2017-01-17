@@ -95,6 +95,7 @@ public :
 	CBlock* GetBlock (void);
 	bool GetShot(void);
 	bool GetFue(void);
+	int GetCnt(void);
 
 	void SetAnim (MOTIONTYPE MotionType);
 

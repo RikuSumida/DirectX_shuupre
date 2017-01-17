@@ -336,6 +336,10 @@ bool CSceneX::GetFue(void)
 {
 	return m_fue;
 }
+int CSceneX::GetCnt(void)
+{
+	return m_Cnt;
+}
 
 /*******************************************************************************
 *
