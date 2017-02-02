@@ -56,6 +56,7 @@ public :
 	void Update ( void ) ;
 	void Draw ( void ) ;
 	D3DXMATRIX GetWorldMatrix (void);
+	void  SetPosition(D3DXVECTOR3 Pos);
 
 
 

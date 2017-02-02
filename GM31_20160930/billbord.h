@@ -8,9 +8,9 @@
 
 //マクロ定義
 /*ポリゴンの幅の半分*/
-#define billboard_WIDTH ( 300.0f / 2 )
+#define billboard_WIDTH ( 100.0f / 2 )
 /*ポリゴンの高さの半分*/
-#define billboard_HEIGHT ( 300.0f / 2 )
+#define billboard_HEIGHT ( 100.0f / 2 )
 
 
 /*******************************************************************************
@@ -45,6 +45,7 @@ public :
 	void Update ( void ) ;
 	void Draw ( void ) ;
 	static CBillbord* Create(void);
+	void SetPosition(D3DXVECTOR3 Pos);
 	//D3DXVECTOR3 GetPosition ( void );
 
 

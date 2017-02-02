@@ -96,6 +96,11 @@ void CModel::SetMotion (D3DXVECTOR3 Pos , D3DXVECTOR3 Rot)
 	m_Position = Pos;
 	m_Rotation = Rot;
 }
+void  CModel::SetPosition(D3DXVECTOR3 Pos)
+{
+	m_Position = Pos;
+
+}
 //Žæ“¾
 //D3DXVECTOR3 CSceneX::GetPosition(void)
 //{

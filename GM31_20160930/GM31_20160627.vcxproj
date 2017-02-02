@@ -84,6 +84,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="3Dobject.cpp" />
     <ClCompile Include="billbord.cpp" />
     <ClCompile Include="blink.cpp" />
     <ClCompile Include="block.cpp" />
@@ -121,6 +122,7 @@
     <ClCompile Include="titlerogo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="3Dobject.h" />
     <ClInclude Include="al.h" />
     <ClInclude Include="alc.h" />
     <ClInclude Include="alut.h" />

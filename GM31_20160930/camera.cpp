@@ -83,12 +83,12 @@ void CCamera::Uninit(void)
 *******************************************************************************/
 void CCamera::Update(void)
 {
-	CGame* game = (CGame*)GetManager()->GetMode();
+	//CGame* game = (CGame*)GetManager()->GetMode();
 	//ƒvƒŒƒCƒ„[Žæ“¾
-	CSceneX *Player;
-	D3DXVECTOR3 PlayerPos;	
-	Player = game->GetPlayer();
-	PlayerPos = Player->GetPosition();
+	//CSceneX *Player;
+	//D3DXVECTOR3 PlayerPos;	
+	//Player = game->GetPlayer();
+	//PlayerPos = Player->GetPosition();
 
 
 	CInput *Input;

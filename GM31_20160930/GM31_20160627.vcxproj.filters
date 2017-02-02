@@ -162,6 +162,9 @@
     <ClCompile Include="gauge.cpp">
       <Filter>ソース ファイル\game\UI</Filter>
     </ClCompile>
+    <ClCompile Include="3Dobject.cpp">
+      <Filter>ソース ファイル\game\object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="al.h">
@@ -280,6 +283,9 @@
     </ClInclude>
     <ClInclude Include="gauge.h">
       <Filter>ヘッダー ファイル\game\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="3Dobject.h">
+      <Filter>ヘッダー ファイル\game\object</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

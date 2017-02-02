@@ -61,7 +61,7 @@ HRESULT CBillbord:: Init ( void )
 
 
 	/*テクスチャの読み込み*/
-	D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/explosion000.png" , & m_pTexturePolygon ) ;
+	D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/gauge.png" , & m_pTexturePolygon ) ;
 	for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
 	{
 		/*頂点バッファの生成*                        確保するバッファサイズ                         使用する頂点フォーマット*/
@@ -74,10 +74,10 @@ HRESULT CBillbord:: Init ( void )
 	/*メモリ確保*/
 	m_pVtxBuffPolygon  ->Lock ( 0 , 0 , ( void** ) & pVtx , 0 ) ;
 	pVtx [ 0 ].pos .x = m_Position .x - sinf ( m_fAnglebillboard + m_Rotation .z  ) * m_fLengthbillboard ;
-	pVtx [ 0 ].pos .y = 300.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
+	pVtx [ 0 ].pos .y = 100.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
 	pVtx [ 0 ].pos .z = 0.0f ;
 	pVtx [ 1 ].pos .x = m_Position .x + sinf ( m_fAnglebillboard + m_Rotation .z  ) * m_fLengthbillboard ;
-	pVtx [ 1 ].pos .y = 300.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
+	pVtx [ 1 ].pos .y = 100.0f;//g_posbillboard .y - cosf ( g_fAnglebillboard + g_rotbillboard .z  ) * g_fLengthbillboard ;
 	pVtx [ 1 ].pos .z = 0.0f ;
 	pVtx [ 2 ].pos .x = m_Position .x - sinf ( m_fAnglebillboard - m_Rotation .z  ) * m_fLengthbillboard ;
 	pVtx [ 2 ].pos .y = 0;//g_posbillboard .y + cosf ( g_fAnglebillboard - g_rotbillboard .z  ) * g_fLengthbillboard ;
@@ -207,6 +207,10 @@ void CBillbord::Update(void)
 	}
 
 	//PrintDebugProc("エネミーX座標：%f  Y座標:%f  Z座標%f",m_Position.x,m_Position.y,m_Position.z);
+}
+void CBillbord::SetPosition(D3DXVECTOR3 Pos)
+{
+	m_Position = Pos;
 }
 /*******************************************************************************
 *
