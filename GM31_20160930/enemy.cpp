@@ -5,6 +5,7 @@
 *******************************************************************************/
 #include "main.h"
 #include "effect.h"
+#include "3Dobject.h"
 /*******************************************************************************
 *
 *	マクロ定義
@@ -34,13 +35,22 @@ CEnemy::CEnemy(int Priority):CScene3D(Priority)
 	m_pVtxBuffPolygon = NULL ;
 	
 	m_Position = D3DXVECTOR3 ( 0 , 0 , 0 ) ;
-	m_Rotation = D3DXVECTOR3 ( 0 , 0 , 0 ) ;
+	m_Rotation = D3DXVECTOR3 ( 0 , 0, 0 ) ;
 	m_center =  D3DXVECTOR3 ( 0 , 0 , 0 ) ;
 	m_change =  D3DXVECTOR3 ( 0 , 0 , 0 ) ;
 	m_Vec1 =  D3DXVECTOR3 ( 0 , 0 , 0 ) ;
 	m_Rot = 0;
 	m_Use = true;
-	
+	m_Cnt = 0;
+
+	m_WanderPos = D3DXVECTOR3(0, 0, 0);
+	m_randvalue = 0;
+
+	m_WanderJitter = 70;
+	m_WanderRadius = 200;
+	m_WanderDistance = 250;
+
+
 
 }
 //デストラクタ
@@ -57,7 +67,7 @@ CEnemy::~CEnemy()
 HRESULT CEnemy:: Init ( void )
 {
 	
-
+	//m_Target = CBillbord::Create();
 	VERTEX_3D *pVtx ;
 	CRenderer *Renderer ;
 	Renderer = GetManager ()->GetRenderer();	
@@ -68,8 +78,11 @@ HRESULT CEnemy:: Init ( void )
 	m_fAnglebillboard = atan2f ( Enemy_WIDTH , Enemy_HEIGHT ) ;
 
 	m_model = new CModel;
+	//m_Target = new CModel;
 	//モデル読み込み
 	m_model->Init("data/MODEL/Sheep.x",NULL);
+	//m_Target->Init("data/MODEL/Target.x", NULL);
+	m_Target = CSceneObject::Create("data/MODEL/Target.x");
 
 
 	///*テクスチャの読み込み*/
@@ -117,9 +130,17 @@ HRESULT CEnemy:: Init ( void )
 	//pVtx [ 3 ].tex = D3DXVECTOR2 ( 1 , 1 ) ;
 	///*解放*/
 	//m_pVtxBuffPolygon  ->Unlock ( ) ;
-	m_Position = D3DXVECTOR3 ( rand()%1500 , 0 , rand()%1500 ) ;
+	m_Position = D3DXVECTOR3 ( rand()%1000 , 0 , rand()%1500 ) ;
+	m_WanderTarget = m_Position;
+
 	//m_Vec1 = D3DXVECTOR3(rand()%5,0,rand()%5);
 	EnemyLength = 10 + rand()%100;
+
+
+	m_WanderTarget = m_Position;
+	double theta = (1 / (rand() % 10 + 1)) * (D3DX_PI * 2);
+	m_WanderTarget += D3DXVECTOR3(m_WanderRadius*sinf(theta), 0, m_WanderRadius*cosf(theta));
+
 	return S_OK ;
 
 }
@@ -193,6 +214,8 @@ void CEnemy::Update(void)
 	bool Shot,Hit;
 
 	CGame* game = (CGame*)GetManager()->GetMode();
+
+	
 	Shot = false;
 	Hit = false;
 	Field = game->GetMeshField();
@@ -253,47 +276,49 @@ void CEnemy::Update(void)
 					m_Vec1 += -m_change;
 				}
 			}
-			m_change = PlayerPos - m_Position;
-			//プレイヤー
-			//距離
-			Length = D3DXVec3Length(&m_change);
-			if (Shot == true)
-			{
-				ShotLength = 300;
-			}
-			if(Length < PLAYER_DISTANCE+ ShotLength)
-			{
-				D3DXVec3Normalize(&m_change, &m_change);
-
-				m_Vec1 += -m_change*0.1f ;
-
-			}
-			if (Length < PLAYER_DISTANCE+100.0f+ ShotLength)
-			{
-				m_Tracking = true;
-
-			}
-			else
-			{
-				m_Tracking = false;
-			}
-			//門
-			if (m_Tracking == false)
-			{
-				m_change = Gatepos - m_Position;
-				Length = D3DXVec3Length(&m_change);
-				if (Length < AVOID_GATE)
-				{
-					D3DXVec3Normalize(&m_change, &m_change);
-
-					m_Vec1 += -m_change;
-
-				}
-			}
+			
 
 
 		}
 	}
+	//プレイヤー
+	//距離
+	m_change = PlayerPos - m_Position;
+	Length = D3DXVec3Length(&m_change);
+	if (Shot == true)
+	{
+		ShotLength = 300;
+	}
+	if (Length < PLAYER_DISTANCE + ShotLength)
+	{
+		D3DXVec3Normalize(&m_change, &m_change);
+
+		m_Vec1 += -m_change*2;
+
+	}
+	if (Length < PLAYER_DISTANCE + 100.0f + ShotLength)
+	{
+		m_Tracking = true;
+
+	}
+	else
+	{
+		m_Tracking = false;
+	}
+	//門
+	if (m_Tracking == false)
+	{
+		m_change = Gatepos - m_Position;
+		Length = D3DXVec3Length(&m_change);
+		if (Length < AVOID_GATE)
+		{
+			D3DXVec3Normalize(&m_change, &m_change);
+
+			m_Vec1 += -m_change;
+
+		}
+	}
+
 	//m_Position += m_Vec1 * 2;
 
 
@@ -301,11 +326,22 @@ void CEnemy::Update(void)
 
 	//初期化
 	m_center = D3DXVECTOR3(0,0,0);
+	D3DXVECTOR3 Pos = D3DXVECTOR3(0, 0, 0);
 	//整列
 	for(int i = 0; i<ENEMY_MAX;i++)
 	{
 		enemy = game->GetEnemy(i);
-		m_center += enemy->GetVec();
+		if (enemy->GetUse() == true)
+		{
+			Pos = enemy->GetPosition();
+			Pos = Pos - m_Position;
+			Length = D3DXVec3Length(&Pos);
+			if (Length <= LOOK_AREA)
+			{
+				m_center += enemy->GetVec();
+			}
+
+		}
 
 	}
 	//各個体は向きを合わせようとする
@@ -320,7 +356,7 @@ void CEnemy::Update(void)
 
 
 	//結合
-
+	int Cnt = 0;
 	//初期化
 	m_center = D3DXVECTOR3(0,0,0);
 	m_LastSheepcenter = m_Sheepcenter;
@@ -328,14 +364,24 @@ void CEnemy::Update(void)
 	for(int i = 0; i<ENEMY_MAX;i++)
 	{
 		enemy = game->GetEnemy(i);
-		m_center += enemy->GetPosition();
+		if (enemy->GetUse() == true)
+		{
+			Pos = enemy->GetPosition();
+			Pos = Pos - m_Position;
+			Length = D3DXVec3Length(&Pos);
+			if (Length <= LOOK_AREA)
+			{
+				m_center += enemy->GetPosition();
+				Cnt++;
+			}
+
+		}
+
+		
 	
 	}
-	//center.x = center.x/ENEMY_MAX;
-	//center.y = center.y/ENEMY_MAX;
-	//center.z = center.z/ENEMY_MAX;
-	m_center /= ENEMY_MAX;
-
+	//m_center /= ENEMY_MAX;
+	m_center /= Cnt;
 	//各個体は群れの中心へ移動しようとする
 	m_Sheepcenter = m_center - m_Position;
 
@@ -345,16 +391,11 @@ void CEnemy::Update(void)
 
 	D3DXVECTOR3 move = D3DXVECTOR3(0.0f,0.0f,0.0f);
 	////移動量加算
-	move = m_Vec1 * 4;
+	move = m_Vec1 ;
 	//m_Position += (move - m_Position)*0.8f;
-	m_Position += move;
+	//m_Position += move;
 
 
-	//世界の境界
-	if (Field->LimitField(m_Position) == true )
-	{
-		m_Position += (m_Vec1*-10);
-	}
 	//収容
 	m_change = Gatepos - m_Position;
 	Length = D3DXVec3Length(&m_change);
@@ -363,8 +404,13 @@ void CEnemy::Update(void)
 		m_Use = false;
 		CEffect::Create("data/TEXTURE/explosion000.png",8,1,m_Position);
 	}
+	//徘徊行動
+	//m_Vec1 = Wander(m_Position);
+	move += Wander(m_Position);
+	m_Position += move;
 
 
+	//m_WanderTarget = m_Position;
 	//向いている方向を合わせる
 	float LastSheepRot;
 	LastSheepRot = m_Rotation.y;
@@ -383,9 +429,73 @@ void CEnemy::Update(void)
 	}
 
 
+	//世界の境界
+	if (Field->LimitField(m_Position) == true)
+	{
+		//m_Position += (m_Vec1*-10);
+		move *= -1;
+		m_Position += move;
+
+	}
+
+
 
 
 	//PrintDebugProc("エネミーX座標：%f  Y座標:%f  Z座標%f\n",m_Position.x,m_Position.y,m_Position.z);
+}
+D3DXVECTOR3 CEnemy::Wander(D3DXVECTOR3 Pos)
+{
+	
+	
+	float random = (1 / ((float)(rand() % 100) - 50.0f));
+	//if (m_Cnt > 120)
+	//{
+	//	m_randvalue = 0;
+	//	m_Cnt = 0;
+	//}
+
+	//羊の位置と同期
+	m_WanderTarget.y = Pos.y;
+	//m_WanderTarget = Pos;
+	m_Cnt++;
+	if (m_Cnt > 1)
+	{
+		m_WanderOldPos = D3DXVECTOR3((1 / ((float)(rand() % 100) - 50.0f))*m_WanderJitter, 0, (1 / ((float)(rand() % 100) - 50.0f))*m_WanderJitter);
+		m_Cnt = 0;
+	}
+
+	//ランダムの値を目標に加える
+	//m_WanderTarget += m_WanderOldPos;
+	m_WanderTarget += D3DXVECTOR3((1 / ((float)(rand() % 100) - 50.0f))*m_WanderJitter, 0, (1 / ((float)(rand() % 100) - 50.0f))*m_WanderJitter);
+	//PrintDebugProc("目標X座標：%f  Y座標:%f  Z座標%f\n", m_WanderTarget.x, m_WanderTarget.y, m_WanderTarget.z);
+	m_WanderTarget -= Pos;
+
+	//目標を徘徊円上に再投影する
+	D3DXVec3Normalize(&m_WanderTarget, &m_WanderTarget);
+	m_WanderTarget *= m_WanderRadius;
+	m_WanderTarget += Pos;
+
+	////羊の向いている方向を取得
+	//double front = atan2f(m_Position.x - m_LastPosition.x, m_Position.z - m_LastPosition.z);
+
+	////目標を羊の前にDistaneの量だけ移動する
+
+	m_WanderPos = D3DXVECTOR3(sinf(m_Rotation.y) * m_WanderDistance,0, cosf(m_Rotation.y)*m_WanderDistance);
+	m_WanderPos += m_WanderTarget ;
+	m_Target->SetPosition(m_WanderPos);
+
+
+	//m_WanderPos = D3DXVECTOR3(m_WanderTarget.x + m_WanderDistance,0, m_WanderTarget.z  + m_WanderDistance );
+	//m_WanderPos = D3DXVECTOR3(m_WanderTarget.x + (sinf(m_Rotation.y) * m_WanderDistance), 0, m_WanderTarget.z + (cosf(m_Rotation.y) * m_WanderDistance));
+	//m_WanderPos = D3DXVECTOR3(sinf(m_Rotation.y) * m_WanderDistance, 0, cosf(m_Rotation.y*m_WanderDistance));
+	//Pos = (m_WanderPos - m_WanderOldPos) *0.3f;
+	
+	m_WanderPos -= m_Position;
+	//m_Target->SetPosition(m_WanderPos);
+	D3DXVec3Normalize(&m_WanderPos,&m_WanderPos);
+	
+	return (m_WanderPos * 4 );
+	//return m_WanderPos - Pos;
 }
 /*******************************************************************************
 *
@@ -413,7 +523,7 @@ void CEnemy:: Draw ( void )
 
 
 
-
+	
 
 
 
@@ -450,7 +560,9 @@ void CEnemy:: Draw ( void )
 	if (m_Use == true)
 	{
 		m_model->Draw();
+		//m_Target->Draw();
 	}
+
 
 
 

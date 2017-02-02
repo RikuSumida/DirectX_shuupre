@@ -12,7 +12,7 @@
 /*ポリゴンの高さの半分*/
 #define Enemy_HEIGHT ( 50.0f / 2 )
 //敵の数
-#define ENEMY_MAX (30)
+#define ENEMY_MAX (1)
 //最短距離
 #define ENEMY_DISTANCE (50.0f)
 //プレイヤーとの距離
@@ -21,6 +21,8 @@
 #define ENEMY_GATE (150.0f)
 //門を避ける距離
 #define AVOID_GATE (300.0f)
+//見る範囲
+#define LOOK_AREA (100.0f)
 
 
 /*******************************************************************************
@@ -34,13 +36,16 @@
 *	クラスの定義
 *
 *******************************************************************************/
+class CSceneObject;
 class CEnemy: public CScene3D
 {
 protected:
 
 	//モデル
 	CModel *m_model;
-
+	CSceneObject *m_Target;
+	//CModel *m_Target;
+	
 	//作業用変数
 	float m_Rot;
 
@@ -58,6 +63,12 @@ protected:
 	D3DXVECTOR3 m_LastPosition;
 	//群れの中心
 	D3DXVECTOR3 m_Sheepcenter,m_LastSheepcenter,m_centerNor;
+	//徘徊関連
+	double m_WanderRadius,m_WanderDistance,m_WanderJitter;
+	D3DXVECTOR3 m_WanderTarget,m_WanderPos,m_WanderOldPos;
+	//CBillbord *m_Target;
+	int m_Cnt;
+	int m_randvalue;
 
 
 
@@ -72,6 +83,7 @@ public :
 	static CEnemy* Create(void);
 	D3DXVECTOR3  GetVec (void);
 	bool GetUse(void);
+	D3DXVECTOR3 Wander(D3DXVECTOR3 Pos);
 	//D3DXVECTOR3 GetPosition ( void );
 
 
