@@ -55,11 +55,11 @@ HRESULT CResultBg:: Init ( void )
 	int EnemyCnt = GetEnemyNum();
 	if(EnemyCnt > 15)
 	{
-		D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/back_.jpg" , & m_pTexturePolygon ) ;
+		D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/back.jpg" , & m_pTexturePolygon ) ;
 	}
 	else
 	{
-		D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/back02_.jpg" , & m_pTexturePolygon ) ;
+		D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/back02.jpg" , & m_pTexturePolygon ) ;
 	}
 	for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
 	{

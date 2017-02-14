@@ -33,7 +33,7 @@ class CRenderer ;
 class CScene ;
 class CCamera;
 class CLight ;
-class Input ;
+//class Input ;
 class CMeshfield;
 class CFade;
 class CManager
@@ -42,7 +42,7 @@ private:
 	static CMode *m_Mode;
 	CRenderer *m_Renderer;
 
-	CInput *m_Input;
+	//CInput *m_Input;
 	CFade* m_Fade;
 
 
@@ -56,7 +56,7 @@ public :
 	void Update (void);
 	void Draw (void) ;
 	CRenderer *GetRenderer (void) ;
-	CInput *GetInput (void);
+	//CInput *GetInput (void);
 
 
 	static CMode* GetMode(void);

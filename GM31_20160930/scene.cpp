@@ -172,6 +172,11 @@ D3DXVECTOR3 CScene::GetPosition(void)
 	return m_Position;
 }
 
+D3DXVECTOR3 CScene::GetRotation(void)
+{
+	return m_Rotation;
+}
+
 
 
 

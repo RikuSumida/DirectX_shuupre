@@ -1,17 +1,7 @@
-﻿  enemy.cpp
+﻿  result.cpp
 d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
-  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\shuupure\gm31_20160930\input.h(23): warning C4005: 'DIRECTINPUT_VERSION': macro redefinition
-  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h(42): note: see previous definition of 'DIRECTINPUT_VERSION'
-d:\shuupure\gm31_20160930\enemy.cpp(133): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(137): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(142): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(142): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(71): warning C4101: 'pVtx': unreferenced local variable
-d:\shuupure\gm31_20160930\enemy.cpp(384): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(211): warning C4101: 'Block': unreferenced local variable
-d:\shuupure\gm31_20160930\enemy.cpp(463): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(469): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(475): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(483): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\score.h(12): warning C4005: 'POLYGON_WIDTH': macro redefinition
+  d:\shuupure\gm31_20160930\time.h(23): note: see previous definition of 'POLYGON_WIDTH'
+d:\shuupure\gm31_20160930\score.h(14): warning C4005: 'POLYGON_HEIGHT': macro redefinition
+  d:\shuupure\gm31_20160930\time.h(25): note: see previous definition of 'POLYGON_HEIGHT'
   GM31_20160627.vcxproj -> D:\shuupure\GM31_20160930\Debug\GM31_20160627.exe

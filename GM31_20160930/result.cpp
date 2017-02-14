@@ -38,8 +38,7 @@ void CResult::Init(void)
 {
 	CResultBg::Create();
 	int EnemyCnt = GetEnemyNum();
-	CScore::Create(D3DXVECTOR3(450.0f, 350.0f, 0.0f), D3DXVECTOR3(200.0f, 350.0f, 0.0f), EnemyCnt);
-	CScore::Create(D3DXVECTOR3(1000.0f, 350.0f, 0.0f), D3DXVECTOR3(800.0f, 350.0f, 0.0f), ENEMY_MAX);
+	CScore::Create(D3DXVECTOR3(700.0f, 350.0f, 0.0f), D3DXVECTOR3(550.0f, 350.0f, 0.0f), EnemyCnt);
 
 	//CResultRogo::Create();
 	CBlink::Create("data/TEXTURE/PressEnter.png", 400.0f, 200.0f, D3DXVECTOR3(450.0f, 500.0f, 0.0f));
@@ -61,14 +60,14 @@ void CResult::Uninit(void)
 //I—¹
 void CResult::Update(void)
 {
-	CInput *Input;
-	Input = GetManager()->GetInput();
+	//CInput *Input;
+	//Input = GetManager()->GetInput();
 	m_Cnt++;
 
-	if(m_Cnt >= 300)
+	if(m_Cnt >= 60)
 	{
 
-		if (Input->GetKeyboardTrigger(DIK_RETURN))
+		if (Input::GetKeyboardTrigger(DIK_RETURN))
 		{
 			CSoundGL::Start(SOUND_LABEL_SE_ENTER,FALSE);
 

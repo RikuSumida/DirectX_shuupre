@@ -131,15 +131,14 @@ HRESULT CEnemy:: Init ( void )
 	///*解放*/
 	//m_pVtxBuffPolygon  ->Unlock ( ) ;
 	m_Position = D3DXVECTOR3 ( rand()%1000 , 0 , rand()%1500 ) ;
-	m_WanderTarget = m_Position;
 
 	//m_Vec1 = D3DXVECTOR3(rand()%5,0,rand()%5);
-	EnemyLength = 10 + rand()%100;
+	EnemyLength = ENEMY_DISTANCE + rand()%100;
 
 
 	m_WanderTarget = m_Position;
 	double theta = (1 / (rand() % 10 + 1)) * (D3DX_PI * 2);
-	m_WanderTarget += D3DXVECTOR3(m_WanderRadius*sinf(theta), 0, m_WanderRadius*cosf(theta));
+	m_WanderTarget += D3DXVECTOR3(m_WanderRadius*sinf(theta)*m_WanderRadius, 0, m_WanderRadius*cosf(theta)*m_WanderRadius);
 
 	return S_OK ;
 
@@ -252,7 +251,6 @@ void CEnemy::Update(void)
 
 	m_Vec1 = D3DXVECTOR3(0,0,0);
 	//引き離し
-	//&プレイヤーとのあたり判定
 	PlayerPos = game->GetPlayer()->GetPosition();
 	Shot = Player->GetShot();
 	int ShotLength = 0;
@@ -264,7 +262,7 @@ void CEnemy::Update(void)
 		{
 			if (enemy->GetUse() == true)
 			{
-				m_change = m_change - m_Position;
+				m_change = m_Position-  m_change ;
 				//距離
 				Length = D3DXVec3Length(&m_change);
 				if (Length < EnemyLength)
@@ -273,7 +271,7 @@ void CEnemy::Update(void)
 					D3DXVec3Normalize(&m_change, &m_change);
 					//D3DXVec3Length(&m_change);
 
-					m_Vec1 += -m_change;
+					m_Vec1 += m_change*2;
 				}
 			}
 			
@@ -281,19 +279,19 @@ void CEnemy::Update(void)
 
 		}
 	}
-	//プレイヤー
+	//プレイヤーとの引き離し
 	//距離
 	m_change = PlayerPos - m_Position;
 	Length = D3DXVec3Length(&m_change);
 	if (Shot == true)
 	{
-		ShotLength = 300;
+		ShotLength = 400;
 	}
 	if (Length < PLAYER_DISTANCE + ShotLength)
 	{
 		D3DXVec3Normalize(&m_change, &m_change);
 
-		m_Vec1 += -m_change*2;
+		m_Vec1 += -m_change*4;
 
 	}
 	if (Length < PLAYER_DISTANCE + 100.0f + ShotLength)
@@ -308,13 +306,13 @@ void CEnemy::Update(void)
 	//門
 	if (m_Tracking == false)
 	{
-		m_change = Gatepos - m_Position;
+		m_change = m_Position - Gatepos  ;
 		Length = D3DXVec3Length(&m_change);
 		if (Length < AVOID_GATE)
 		{
 			D3DXVec3Normalize(&m_change, &m_change);
 
-			m_Vec1 += -m_change;
+			m_Vec1 += m_change*4;
 
 		}
 	}
@@ -327,6 +325,7 @@ void CEnemy::Update(void)
 	//初期化
 	m_center = D3DXVECTOR3(0,0,0);
 	D3DXVECTOR3 Pos = D3DXVECTOR3(0, 0, 0);
+	int enemyCnt = 0;
 	//整列
 	for(int i = 0; i<ENEMY_MAX;i++)
 	{
@@ -338,18 +337,22 @@ void CEnemy::Update(void)
 			Length = D3DXVec3Length(&Pos);
 			if (Length <= LOOK_AREA)
 			{
-				m_center += enemy->GetVec();
+				enemyCnt++;
+				m_center += enemy->GetRotation();
 			}
 
 		}
 
 	}
 	//各個体は向きを合わせようとする
-	m_center /= ENEMY_MAX;
+	m_center /= enemyCnt;
+
+	m_Rotation = m_center;
+
 	
-	D3DXVec3Normalize(&m_center,&m_center);
+	//D3DXVec3Normalize(&m_center,&m_center);
 	//D3DXVec3Length(&m_center);
-	m_Vec1 += m_center;
+	//m_Vec1 += m_center;
 	//m_Position += m_Vec1 * 2;
 
 
@@ -387,7 +390,7 @@ void CEnemy::Update(void)
 
 	D3DXVec3Normalize(&m_centerNor, &m_Sheepcenter);
 	//D3DXVec3Length(&m_change);
-	m_Vec1 += m_centerNor;
+	m_Vec1 += m_centerNor*4;
 
 	D3DXVECTOR3 move = D3DXVECTOR3(0.0f,0.0f,0.0f);
 	////移動量加算
@@ -396,18 +399,26 @@ void CEnemy::Update(void)
 	//m_Position += move;
 
 
-	//収容
-	m_change = Gatepos - m_Position;
-	Length = D3DXVec3Length(&m_change);
-	if (Length < ENEMY_GATE && m_Use == true)
-	{
-		m_Use = false;
-		CEffect::Create("data/TEXTURE/explosion000.png",8,1,m_Position);
-	}
 	//徘徊行動
 	//m_Vec1 = Wander(m_Position);
+
+	//m_Position += Wander(m_Position);
+
 	move += Wander(m_Position);
+	D3DXVECTOR3 wallvec;
+	//世界の境界
+	if (Field->LimitField(m_Position + move) == true)
+	{
+		wallvec = Field->FieldNormal(m_Position + move);
+		move += wallvec * 6;
+		//move *= -1;
+		//m_Position += move;
+
+	}
+
+
 	m_Position += move;
+
 
 
 	//m_WanderTarget = m_Position;
@@ -419,24 +430,28 @@ void CEnemy::Update(void)
 	//ConversionQuantity = atan2f(m_LastPosition.x-m_Position.x, m_LastPosition.z - m_Position.z);
 	ConversionQuantity = atan2f(m_Position.x - m_LastPosition.x, m_Position.z - m_LastPosition.z);
 	m_Rotation.y += (ConversionQuantity - LastSheepRot)*0.3f;
-	if (m_Rotation.y > D3DX_PI)
+	//PrintDebugProc("羊y軸回転：%f \n", m_Rotation.y);
+	if (ConversionQuantity > D3DX_PI)
 	{
-		m_Rotation.y = -D3DX_PI + (D3DX_PI - m_Rotation.y);
+		//m_Rotation.y = -D3DX_PI + (D3DX_PI - m_Rotation.y);
+		m_Rotation.y -= D3DX_PI * 2;
 	}
-	else if (m_Rotation.y < -D3DX_PI)
+	else if (ConversionQuantity < -D3DX_PI)
 	{
-		m_Rotation.y = -D3DX_PI - (D3DX_PI + m_Rotation.y);
+		//m_Rotation.y = -D3DX_PI - (D3DX_PI + m_Rotation.y);
+		m_Rotation.y += D3DX_PI * 2;
+	}
+
+	//収容
+	m_change = Gatepos - m_Position;
+	Length = D3DXVec3Length(&m_change);
+	if (Length < ENEMY_GATE && m_Use == true && m_Tracking == true)
+	{
+		m_Use = false;
+		CEffect::Create("data/TEXTURE/explosion000.png", 8, 1, m_Position);
 	}
 
 
-	//世界の境界
-	if (Field->LimitField(m_Position) == true)
-	{
-		//m_Position += (m_Vec1*-10);
-		move *= -1;
-		m_Position += move;
-
-	}
 
 
 
@@ -458,16 +473,14 @@ D3DXVECTOR3 CEnemy::Wander(D3DXVECTOR3 Pos)
 	m_WanderTarget.y = Pos.y;
 	//m_WanderTarget = Pos;
 	m_Cnt++;
-	if (m_Cnt > 1)
-	{
-		m_WanderOldPos = D3DXVECTOR3((1 / ((float)(rand() % 100) - 50.0f))*m_WanderJitter, 0, (1 / ((float)(rand() % 100) - 50.0f))*m_WanderJitter);
-		m_Cnt = 0;
-	}
+	//if (m_Cnt > 1)
+	//{
+	//	m_WanderOldPos = D3DXVECTOR3((1 / ((float)(rand() % 100) - 50.0f))*m_WanderJitter, 0, (1 / ((float)(rand() % 100) - 50.0f))*m_WanderJitter);
+	//	m_Cnt = 0;
+	//}
 
 	//ランダムの値を目標に加える
-	//m_WanderTarget += m_WanderOldPos;
 	m_WanderTarget += D3DXVECTOR3((1 / ((float)(rand() % 100) - 50.0f))*m_WanderJitter, 0, (1 / ((float)(rand() % 100) - 50.0f))*m_WanderJitter);
-	//PrintDebugProc("目標X座標：%f  Y座標:%f  Z座標%f\n", m_WanderTarget.x, m_WanderTarget.y, m_WanderTarget.z);
 	m_WanderTarget -= Pos;
 
 	//目標を徘徊円上に再投影する
@@ -480,9 +493,9 @@ D3DXVECTOR3 CEnemy::Wander(D3DXVECTOR3 Pos)
 
 	////目標を羊の前にDistaneの量だけ移動する
 
-	m_WanderPos = D3DXVECTOR3(sinf(m_Rotation.y) * m_WanderDistance,0, cosf(m_Rotation.y)*m_WanderDistance);
-	m_WanderPos += m_WanderTarget ;
-	m_Target->SetPosition(m_WanderPos);
+	m_WanderPos = m_WanderTarget + D3DXVECTOR3(sinf(m_Rotation.y) * m_WanderDistance,0, cosf(m_Rotation.y)*m_WanderDistance);
+	//m_WanderPos += m_WanderTarget ;
+	//m_Target->SetPosition(m_WanderPos);
 
 
 	//m_WanderPos = D3DXVECTOR3(m_WanderTarget.x + m_WanderDistance,0, m_WanderTarget.z  + m_WanderDistance );
@@ -491,7 +504,6 @@ D3DXVECTOR3 CEnemy::Wander(D3DXVECTOR3 Pos)
 	//Pos = (m_WanderPos - m_WanderOldPos) *0.3f;
 	
 	m_WanderPos -= m_Position;
-	//m_Target->SetPosition(m_WanderPos);
 	D3DXVec3Normalize(&m_WanderPos,&m_WanderPos);
 	
 	return (m_WanderPos * 4 );

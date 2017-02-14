@@ -32,6 +32,8 @@
 CManager *g_Manager ;
 /*FPSカウンタ*/
 int g_nCountFPS ;
+HWND hWnd; /*ウインドウハンドル*/
+
 /*******************************************************************************
 *
 *	プロトタイプ宣言
@@ -70,7 +72,6 @@ int WINAPI WinMain ( HINSTANCE hInstance , HINSTANCE hPrevInstance , LPSTR lpCma
 		"test" , /*ウインドウクラスの名前*/
 		NULL     /*小さいアイコンが設定された場合の情報*/
 	} ;
-	HWND hWnd ; /*ウインドウハンドル*/
 	MSG msg ;  /*メッセージ*/
 
 	DWORD dwFrameCount ;
@@ -222,4 +223,9 @@ LRESULT CALLBACK WndProc ( HWND hWnd , UINT uMsg , WPARAM wParam , LPARAM lParam
 CManager *GetManager ( void )
 {
 	return g_Manager ;
+}
+//ウィンドウハンドル取得
+HWND GetHWND(void)
+{
+	return hWnd;
 }

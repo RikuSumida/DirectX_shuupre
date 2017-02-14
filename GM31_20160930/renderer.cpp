@@ -139,11 +139,11 @@ void CRenderer::Uninit(void)
 *******************************************************************************/
 void CRenderer::Update(void)
 {
-	CInput *Input;
-	Input = GetManager()->GetInput();
+	//CInput *Input;
+	//Input = GetManager()->GetInput();
 
-	if ( Input->GetKeyboardTrigger(DIK_F8) )m_WireFrame =! m_WireFrame;
-	m_WireFrame ? m_pD3DDevice -> SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME) : m_pD3DDevice -> SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
+	//if ( Input->GetKeyboardTrigger(DIK_F8) )m_WireFrame =! m_WireFrame;
+	//m_WireFrame ? m_pD3DDevice -> SetRenderState(D3DRS_FILLMODE, D3DFILL_WIREFRAME) : m_pD3DDevice -> SetRenderState(D3DRS_FILLMODE, D3DFILL_SOLID);
 
 
 }

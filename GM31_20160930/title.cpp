@@ -78,17 +78,17 @@ void CTitle::Uninit(void)
 //I—¹
 void CTitle::Update(void)
 {
-	CInput *Input;
-	Input = GetManager()->GetInput();
+	//CInput *Input;
+	//Input = GetManager()->GetInput();
 
 	m_Camera->Update();
 	m_Light->Update();
 
 
 	m_Cnt++;
-	if(m_Cnt >= 120)
+	if(m_Cnt >= 30)
 	{
-		if (Input->GetKeyboardTrigger(DIK_RETURN))
+		if (InputPlayer::GetTrigger(InputPlayer::ButtonJump, InputPlayer::Input1))
 		{
 			CSoundGL::Start(SOUND_LABEL_SE_ENTER,FALSE);
 			CFade::Start(new CGame);

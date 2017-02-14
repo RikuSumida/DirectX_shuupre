@@ -1,75 +1,77 @@
-#ifndef _INPUT_H
-#define _INPUT_H
-/*******************************************************************************
-*
-*	インクルードファイル
-*
-*******************************************************************************/
-#include "dinput.h"		//入力処理に必要
+#pragma once
+#ifndef INPUT_H_INCLUDED
+#define INPUT_H_INCLUDED
 
+//------------------------------------------------------------------------------
+// LIBRARY LINKS
+//------------------------------------------------------------------------------
+#pragma comment( lib, "dinput8.lib" )	// Necessary for Input - 入力処理に必要
+#pragma comment( lib, "dxguid.lib" )	// Necessary to DirectX Components #include <initguid.h>
 
-/*******************************************************************************
-*
-*	ライブラリのリンク
-*
-*******************************************************************************/
-#pragma comment( lib, "dinput8.lib" )	//入力処理に必要
+//------------------------------------------------------------------------------
+// INCLUDES
+//------------------------------------------------------------------------------
+#define DIRECTINPUT_VERSION		( 0x0800 )
+#include <dinput.h>				// Direct Input
 
-/*******************************************************************************
-*
-*	マクロ定義
-*
-*******************************************************************************/
-#define DIRECTINPUT_VERSION ( 0x0800 ) //警告対処用
-#define REPEAT_INTERVAL ( 40 ) //リピートキーの間隔
-
-/*******************************************************************************
-*
-*	構造体の定義
-*
-*******************************************************************************/
-
-/*******************************************************************************
-*
-*	クラスの定義
-*
-*******************************************************************************/
-//前方宣言
-class CInput
+//------------------------------------------------------------------------------
+// NAMESPACE
+//------------------------------------------------------------------------------
+namespace Input
 {
-private:
+	//--------------------------------------
+	// ENUMERATES
+	//--------------------------------------
+	// Mouse Buttons
+	enum MouseButton
+	{
+		MOUSE_LEFT,							// Left Mouse Button
+		MOUSE_RIGHT,						// Right Mouse Button
+		MOUSE_MIDDLE,						// Middle Mouse Button
+		MOUSE_BUTTON_MAX					// Max Number of Mouse Buttons
+	};
 
-	LPDIRECTINPUT8 m_pInput ; //DirectInputオブジェクトへのポインタ
-	LPDIRECTINPUTDEVICE8 m_pDevKeyboard ; //入力デバイス(キーボード)へのポインタ
-	static BYTE m_aKeyState[ 256 ]; //キーボードの入力情報ワーク
-	static BYTE m_aKeyStateTrigger[ 256 ]; //トリガー情報
-	static BYTE m_aKeyStateRelease[ 256 ]; //リリース情報
-	static BYTE m_aKeyStateRepeat[ 256 ]; //キーリピート情報
-	static int m_aKeyStateRepeatCount[ 256 ]; //キーリピートカウント
+	//--------------------------------------
+	// STRUCTURES
+	//--------------------------------------
+	// Mouse Data
+	struct Mouse
+	{
+		DIMOUSESTATE2 state;				// Mouse State Data
+		float xPos;							// X Position
+		float yPos;							// Y Position
+		int trigger[ MOUSE_BUTTON_MAX ];	// Mouse Button Trigger
+		int release[ MOUSE_BUTTON_MAX ];	// Mouse Button Release
+		bool moved;							// If Mouse Moved
+	};
 
+	//--------------------------------------
+	// FUNCTIONS
+	//--------------------------------------
+	// General
+	void Update( void );
 
+	// Mouse
+	HRESULT InitMouse( HWND hWnd, HINSTANCE hInstance );
+	void UninitMouse( void );
+	void UpdateMouse( void );
+	bool GetMousePress( MouseButton mouseButton );
+	bool GetMouseTrigger( MouseButton mouseButton );
+	bool GetMouseRelease( MouseButton mouseButton );
+	Mouse GetMouse( void );
 
-public :
-	CInput();
-	~CInput();
-	HRESULT Init ( HINSTANCE hInstance , HWND hWnd );
-	void Uninit (void);
-	void Update (void);
-
-
+	// Keyboard
+	HRESULT InitKeyboard( HWND hWnd, HINSTANCE hInstance );
+	void UninitKeyboard( void );
+	void UpdateKeyboard( void );
 
 	bool GetKeyboardPress( int nKey );
 	bool GetKeyboardTrigger( int nKey );
 	bool GetKeyboardRelease( int nKey );
 	bool GetKeyboardRepeat( int nKey );
-
-
 };
 
-/*******************************************************************************
-*
-*	プロトタイプ宣言
-*
-*
-*******************************************************************************/
+//------------------------------------------------------------------------------
+// HEADER END
+//------------------------------------------------------------------------------
 #endif

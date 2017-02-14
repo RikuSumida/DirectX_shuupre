@@ -28,6 +28,8 @@
 #include "enemy.h"
 #include "light.h"
 #include "input.h"
+#include "inputX.h"
+#include "inputPlayer.h"
 #include "manager.h"
 #include "meshfield.h"
 #include "skybox.h"
@@ -75,4 +77,5 @@
 *
 *******************************************************************************/
 CManager *GetManager ( void ) ;
+HWND GetHWND(void);
 #endif

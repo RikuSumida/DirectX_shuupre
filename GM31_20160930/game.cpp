@@ -59,8 +59,8 @@ void CGame::Init(void)
 	m_Player = CSceneX::Create();
 	m_Gate = CGate::Create();
 	CFence::Create();
-	CTime::Create();
 	CScene2D::Create();
+	CTime::Create();
 	CFue::Create("data/TEXTURE/fue2.png", 150.0f, 150.0f, D3DXVECTOR3(700.0f, 500.0f, 0.0f));
 	CGauge::Create();
 
@@ -91,8 +91,8 @@ void CGame::Uninit(void)
 //XV
 void CGame::Update(void)
 {
-	CInput *Input;
-	Input = GetManager()->GetInput();
+	//CInput *Input;
+	//Input = GetManager()->GetInput();
 	m_Camera ->Update();
 	m_Light ->Update();
 

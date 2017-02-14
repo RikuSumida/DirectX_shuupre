@@ -91,8 +91,8 @@ void CCamera::Update(void)
 	//PlayerPos = Player->GetPosition();
 
 
-	CInput *Input;
-	Input = GetManager()->GetInput();
+	//CInput *Input;
+	//Input = GetManager()->GetInput();
 
 
 	//m_Camera . posR .x = PlayerPos.x;
@@ -102,133 +102,133 @@ void CCamera::Update(void)
 	//m_Camera.posV.y = PlayerPos.y + 100;
 	//m_Camera.posV.z = PlayerPos.z + 100;
 	/*******カメラ移動操作******/
-	if ( Input->GetKeyboardPress ( DIK_UP ) )
-	{
-		/*視点を動かす*/
-		m_Camera . posV .x += sinf ( m_Camera . rot . y )  ;
-		m_Camera . posV .z += cosf ( m_Camera . rot . y )  ;
-		/*注視点を動かす*/
-		m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-		m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-	}
-	if ( Input->GetKeyboardPress ( DIK_DOWN ) )
-	{
-		/*視点を動かす*/
-		m_Camera . posV .x -= sinf ( m_Camera . rot . y ) ;
-		m_Camera . posV .z -= cosf ( m_Camera . rot . y ) ;
-		/*注視点を動かす*/
-		m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-		m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//if ( Input->GetKeyboardPress ( DIK_UP ) )
+	//{
+	//	/*視点を動かす*/
+	//	m_Camera . posV .x += sinf ( m_Camera . rot . y )  ;
+	//	m_Camera . posV .z += cosf ( m_Camera . rot . y )  ;
+	//	/*注視点を動かす*/
+	//	m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//	m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//}
+	//if ( Input->GetKeyboardPress ( DIK_DOWN ) )
+	//{
+	//	/*視点を動かす*/
+	//	m_Camera . posV .x -= sinf ( m_Camera . rot . y ) ;
+	//	m_Camera . posV .z -= cosf ( m_Camera . rot . y ) ;
+	//	/*注視点を動かす*/
+	//	m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//	m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
 
-	}
-	if ( Input->GetKeyboardPress ( DIK_LEFT ) )
-	{
-		/*斜め移動*/
-		if ( Input->GetKeyboardPress ( DIK_UP ) )
-		{
-			/*視点を動かす*/
-			m_Camera . posV .x -= sinf ( ( D3DX_PI * ( 0.75 ) ) + m_Camera . rot . y ) ;
-			m_Camera . posV .z += cosf ( ( D3DX_PI * ( 0.75 ) ) + m_Camera . rot . y ) ;
-			/*注視点を動かす*/
-			m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-			m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//}
+	//if ( Input->GetKeyboardPress ( DIK_LEFT ) )
+	//{
+	//	/*斜め移動*/
+	//	if ( Input->GetKeyboardPress ( DIK_UP ) )
+	//	{
+	//		/*視点を動かす*/
+	//		m_Camera . posV .x -= sinf ( ( D3DX_PI * ( 0.75 ) ) + m_Camera . rot . y ) ;
+	//		m_Camera . posV .z += cosf ( ( D3DX_PI * ( 0.75 ) ) + m_Camera . rot . y ) ;
+	//		/*注視点を動かす*/
+	//		m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//		m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
 
-		}
-		/*斜め移動*/
-		if ( Input->GetKeyboardPress ( DIK_DOWN ) )
-		{
-			/*視点を動かす*/
-			m_Camera . posV .x -= sinf ( ( D3DX_PI * ( 0.25 ) ) + m_Camera . rot . y ) ;
-			m_Camera . posV .z += cosf ( ( D3DX_PI * ( 0.25 ) ) + m_Camera . rot . y ) ;
-			/*注視点を動かす*/
-			m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-			m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//	}
+	//	/*斜め移動*/
+	//	if ( Input->GetKeyboardPress ( DIK_DOWN ) )
+	//	{
+	//		/*視点を動かす*/
+	//		m_Camera . posV .x -= sinf ( ( D3DX_PI * ( 0.25 ) ) + m_Camera . rot . y ) ;
+	//		m_Camera . posV .z += cosf ( ( D3DX_PI * ( 0.25 ) ) + m_Camera . rot . y ) ;
+	//		/*注視点を動かす*/
+	//		m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//		m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
 
-		}
-		/*視点を動かす*/
-		m_Camera . posV .x -= cosf ( -m_Camera . rot . y ) ;
-		m_Camera . posV .z -= sinf ( -m_Camera . rot . y ) ;
-		/*注視点を動かす*/
-		m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-		m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-
-
-	}
-	if ( Input->GetKeyboardPress ( DIK_RIGHT ) )
-	{
-		/*斜め移動*/
-		if ( Input->GetKeyboardPress ( DIK_UP ) )
-		{
-			/*視点を動かす*/
-			m_Camera . posV .x -= sinf ( ( -D3DX_PI * ( 0.75 ) ) + m_Camera . rot . y ) ;
-			m_Camera . posV .z += cosf ( ( -D3DX_PI * ( 0.75 ) ) + m_Camera . rot . y ) ;
-			/*注視点を動かす*/
-			m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-			m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-
-		}
-		/*斜め移動*/
-		if ( Input->GetKeyboardPress ( DIK_DOWN ) )
-		{
-			/*視点を動かす*/
-			m_Camera . posV .x -= sinf ( ( -D3DX_PI * ( 0.25 ) ) + m_Camera . rot . y ) ;
-			m_Camera . posV .z += cosf ( ( -D3DX_PI * ( 0.25 ) ) + m_Camera . rot . y ) ;
-			/*注視点を動かす*/
-			m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-			m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-
-		}
-		/*視点を動かす*/
-		m_Camera . posV .x += cosf ( -m_Camera . rot . y ) ;
-		m_Camera . posV .z += sinf ( -m_Camera . rot . y ) ;
-		/*注視点を動かす*/
-		m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-		m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//	}
+	//	/*視点を動かす*/
+	//	m_Camera . posV .x -= cosf ( -m_Camera . rot . y ) ;
+	//	m_Camera . posV .z -= sinf ( -m_Camera . rot . y ) ;
+	//	/*注視点を動かす*/
+	//	m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//	m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
 
 
-	}
+	//}
+	//if ( Input->GetKeyboardPress ( DIK_RIGHT ) )
+	//{
+	//	/*斜め移動*/
+	//	if ( Input->GetKeyboardPress ( DIK_UP ) )
+	//	{
+	//		/*視点を動かす*/
+	//		m_Camera . posV .x -= sinf ( ( -D3DX_PI * ( 0.75 ) ) + m_Camera . rot . y ) ;
+	//		m_Camera . posV .z += cosf ( ( -D3DX_PI * ( 0.75 ) ) + m_Camera . rot . y ) ;
+	//		/*注視点を動かす*/
+	//		m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//		m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+
+	//	}
+	//	/*斜め移動*/
+	//	if ( Input->GetKeyboardPress ( DIK_DOWN ) )
+	//	{
+	//		/*視点を動かす*/
+	//		m_Camera . posV .x -= sinf ( ( -D3DX_PI * ( 0.25 ) ) + m_Camera . rot . y ) ;
+	//		m_Camera . posV .z += cosf ( ( -D3DX_PI * ( 0.25 ) ) + m_Camera . rot . y ) ;
+	//		/*注視点を動かす*/
+	//		m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//		m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+
+	//	}
+	//	/*視点を動かす*/
+	//	m_Camera . posV .x += cosf ( -m_Camera . rot . y ) ;
+	//	m_Camera . posV .z += sinf ( -m_Camera . rot . y ) ;
+	//	/*注視点を動かす*/
+	//	m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	//	m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
 
 
-	/*******カメラの上面での操作********/
-	/*視点操作*/
-	if ( Input->GetKeyboardPress ( DIK_U ) )
-	{
-		m_Camera . rot . y -= 0.05 ;
-	}
+	//}
 
-	if ( Input->GetKeyboardPress ( DIK_O ) )
-	{
-		m_Camera . rot . y += 0.05 ;
-	}
-	//m_Camera . posV .x = m_Camera . posR .x - sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
-	//m_Camera . posV .z = m_Camera . posR .z - cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
 
-	/*注視点操作*/
-	if ( Input->GetKeyboardPress ( DIK_J ) )
-	{
-		m_Camera . rot . y += 0.01 ;
-	}
+	///*******カメラの上面での操作********/
+	///*視点操作*/
+	//if ( Input->GetKeyboardPress ( DIK_U ) )
+	//{
+	//	m_Camera . rot . y -= 0.05 ;
+	//}
 
-	if ( Input->GetKeyboardPress ( DIK_L ) )
-	{
-		m_Camera . rot . y -= 0.01 ;
-	}
-	if ( Input->GetKeyboardPress ( DIK_Y ) )
-	{
-		m_Camera . posR .y+=3;
-	}
-	if ( Input->GetKeyboardPress ( DIK_N ) )
-	{
-		m_Camera . posR .y-=3;
-	}
-	if ( Input->GetKeyboardPress ( DIK_T ) )
-	{
-		m_Camera . posV .y+=3;
-	}
-	if ( Input->GetKeyboardPress ( DIK_B ) )
-	{
-		m_Camera . posV .y-=3;
-	}
+	//if ( Input->GetKeyboardPress ( DIK_O ) )
+	//{
+	//	m_Camera . rot . y += 0.05 ;
+	//}
+	////m_Camera . posV .x = m_Camera . posR .x - sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+	////m_Camera . posV .z = m_Camera . posR .z - cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;
+
+	///*注視点操作*/
+	//if ( Input->GetKeyboardPress ( DIK_J ) )
+	//{
+	//	m_Camera . rot . y += 0.01 ;
+	//}
+
+	//if ( Input->GetKeyboardPress ( DIK_L ) )
+	//{
+	//	m_Camera . rot . y -= 0.01 ;
+	//}
+	//if ( Input->GetKeyboardPress ( DIK_Y ) )
+	//{
+	//	m_Camera . posR .y+=3;
+	//}
+	//if ( Input->GetKeyboardPress ( DIK_N ) )
+	//{
+	//	m_Camera . posR .y-=3;
+	//}
+	//if ( Input->GetKeyboardPress ( DIK_T ) )
+	//{
+	//	m_Camera . posV .y+=3;
+	//}
+	//if ( Input->GetKeyboardPress ( DIK_B ) )
+	//{
+	//	m_Camera . posV .y-=3;
+	//}
 
 	m_Camera . posR .x = m_Camera . posV .x + sinf ( m_Camera . rot . y ) * m_Camera . fDistance ;
 	m_Camera . posR .z = m_Camera . posV .z + cosf ( m_Camera . rot . y ) * m_Camera . fDistance ;

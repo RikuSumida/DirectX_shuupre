@@ -71,7 +71,7 @@ public :
 	void SetPosition ( D3DXVECTOR3 Pos );
 	void SetRotation ( D3DXVECTOR3 Rot );
 	D3DXVECTOR3 GetPosition ( void );
-	void GetRotation ( void );
+	D3DXVECTOR3 GetRotation ( void );
 	//virtual float GetHeight (void);
 
 
