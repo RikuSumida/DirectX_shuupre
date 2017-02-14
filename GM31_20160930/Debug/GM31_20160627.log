@@ -1,7 +1,13 @@
-﻿  result.cpp
+﻿  enemy.cpp
 d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
-d:\shuupure\gm31_20160930\score.h(12): warning C4005: 'POLYGON_WIDTH': macro redefinition
-  d:\shuupure\gm31_20160930\time.h(23): note: see previous definition of 'POLYGON_WIDTH'
-d:\shuupure\gm31_20160930\score.h(14): warning C4005: 'POLYGON_HEIGHT': macro redefinition
-  d:\shuupure\gm31_20160930\time.h(25): note: see previous definition of 'POLYGON_HEIGHT'
+d:\shuupure\gm31_20160930\enemy.cpp(133): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\enemy.cpp(141): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\shuupure\gm31_20160930\enemy.cpp(141): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\enemy.cpp(71): warning C4101: 'pVtx': unreferenced local variable
+d:\shuupure\gm31_20160930\enemy.cpp(348): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\enemy.cpp(387): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\enemy.cpp(210): warning C4101: 'Block': unreferenced local variable
+d:\shuupure\gm31_20160930\enemy.cpp(484): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\enemy.cpp(489): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\enemy.cpp(497): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
   GM31_20160627.vcxproj -> D:\shuupure\GM31_20160930\Debug\GM31_20160627.exe

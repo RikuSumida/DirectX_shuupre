@@ -36,6 +36,7 @@ void CSoundGL::Load(void)
 	m_buffer[1] = alutCreateBufferFromFile("data/SE/Enemycapture.wav");
 	m_buffer[2] = alutCreateBufferFromFile("data/SE/fue.wav");
 	m_buffer[3] = alutCreateBufferFromFile("data/SE/enter.wav");
+	m_buffer[4] = alutCreateBufferFromFile("data/SE/sheep-cry1.wav");
 
 }
 //çƒê∂

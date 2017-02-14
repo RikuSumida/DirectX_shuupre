@@ -440,7 +440,8 @@ void CSceneX::Update(void)
 	float ConversionQuantity = 0;
 	if (m_Position != m_OldPos)
 	{
-		ConversionQuantity = atan2f(m_Position.x - m_OldPos.x, m_Position.z - m_OldPos.z);
+		//ConversionQuantity = atan2f(m_Position.x - m_OldPos.x, m_Position.z - m_OldPos.z);
+		ConversionQuantity = atan2f(m_OldPos.x - m_Position.x, m_OldPos.z - m_Position.z);
 		m_Rotation.y += (ConversionQuantity - LastSheepRot)*0.3f;
 
 	}

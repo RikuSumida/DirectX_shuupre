@@ -449,6 +449,7 @@ void CEnemy::Update(void)
 	{
 		m_Use = false;
 		CEffect::Create("data/TEXTURE/explosion000.png", 8, 1, m_Position);
+		CSoundGL::Start(SOUND_LABEL_SE_CRY, FALSE);
 	}
 
 
