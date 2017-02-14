@@ -12,17 +12,17 @@
 /*ポリゴンの高さの半分*/
 #define Enemy_HEIGHT ( 50.0f / 2 )
 //敵の数
-#define ENEMY_MAX (1)
+#define ENEMY_MAX (31)
 //最短距離
-#define ENEMY_DISTANCE (50.0f)
+#define ENEMY_DISTANCE (10.0f)
 //プレイヤーとの距離
-#define PLAYER_DISTANCE (100.0f)
+#define PLAYER_DISTANCE (200.0f)
 //敵のゴール距離
 #define ENEMY_GATE (150.0f)
 //門を避ける距離
 #define AVOID_GATE (300.0f)
 //見る範囲
-#define LOOK_AREA (100.0f)
+#define LOOK_AREA (200.0f)
 
 
 /*******************************************************************************

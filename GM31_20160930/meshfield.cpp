@@ -509,7 +509,27 @@ bool CMeshfield::LimitField(D3DXVECTOR3 Pos)
 		return false;
 	}
 }
-
+//‚Ç‚Ì•Ç‚©
+D3DXVECTOR3 CMeshfield::FieldNormal(D3DXVECTOR3 Pos)
+{
+	if (Pos.x > BLOCK_SIZE)
+	{
+		return D3DXVECTOR3(-1,0,0);
+	}
+	if (Pos.x < 0)
+	{
+		return D3DXVECTOR3(1, 0, 0);
+	}
+	if (Pos.z > BLOCK_SIZE_Z)
+	{
+		return D3DXVECTOR3(0, 0, -1);
+	}
+	if (Pos.z < 0)
+	{
+		return D3DXVECTOR3(0, 0, 1);
+	}
+	return D3DXVECTOR3(0,0,0);
+}
 /*******************************************************************************
 *
 *	I—¹

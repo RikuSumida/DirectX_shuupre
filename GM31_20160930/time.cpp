@@ -70,10 +70,10 @@ HRESULT CTime:: Init ( void )
 	/*テクスチャの読み込み*/
 	D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/number01.png" , & m_pTexturePolygon ) ;
 	/*中心座標*/
-	m_posTime [ 0 ] = D3DXVECTOR3 ( 1200.0f , 30.0f , 0.0f ) ;
-	m_posTime [ 1 ] = D3DXVECTOR3 ( 1170.0f , 30.0f , 0.0f ) ;
-	m_posTime [ 2 ] = D3DXVECTOR3 ( 1140.0f , 30.0f , 0.0f ) ;
-	m_posTime [ 3 ] = D3DXVECTOR3 ( 1110.0f , 30.0f , 0.0f ) ;
+	m_posTime [ 0 ] = D3DXVECTOR3 ( 1200.0f , 40.0f , 0.0f ) ;
+	m_posTime [ 1 ] = D3DXVECTOR3 ( 1170.0f , 40.0f , 0.0f ) ;
+	m_posTime [ 2 ] = D3DXVECTOR3 ( 1140.0f , 40.0f , 0.0f ) ;
+	m_posTime [ 3 ] = D3DXVECTOR3 ( 1110.0f , 40.0f , 0.0f ) ;
 
 	for ( int i = 0 ; i < Time_NUM ; i ++ )
 	{

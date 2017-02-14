@@ -9,9 +9,9 @@
 
 
 /*ポリゴンの幅の半分*/
-#define POLYGON_WIDTH ( 200 / 2 )
+#define POLYGON_WIDTH ( 100 / 2 )
 /*ポリゴンの高さの半分*/
-#define POLYGON_HEIGHT ( 500 / 2 )
+#define POLYGON_HEIGHT ( 250 / 2 )
 /*スコアの桁数*/
 #define SCORE_NUM ( 2 )
 

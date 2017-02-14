@@ -162,8 +162,8 @@ void CFue::Update(void)
 	Player = game->GetPlayer();
 	bool fue;
 	fue = Player->GetFue();
-	CInput *Input;
-	Input = GetManager()->GetInput();
+	//CInput *Input;
+	//Input = GetManager()->GetInput();
 
 	if (fue == true)
 	{

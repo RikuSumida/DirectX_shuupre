@@ -74,6 +74,7 @@ public :
 	static CMeshfield* Create(void);
 	float GetHeight(D3DXVECTOR3 Pos);
 	bool LimitField (D3DXVECTOR3 Pos);
+	D3DXVECTOR3 FieldNormal(D3DXVECTOR3 Pos);
 
 
 

@@ -29,7 +29,7 @@ CManager::CManager()
 {
 	m_Mode = NULL;
 	m_Renderer = NULL ;
-	m_Input = NULL;
+	//m_Input = NULL;
 
 }
 //デストラクタ
@@ -60,8 +60,9 @@ void CManager ::SetMode (CMode *Mode)
 HRESULT CManager :: Init ( HINSTANCE hInstance , HWND hWnd , BOOL bWindow ) 
 {
 
-	m_Input = new CInput;
-	m_Input ->Init(hInstance,hWnd);
+	//m_Input = new CInput;
+	//m_Input ->Init(hInstance,hWnd);
+	InputPlayer::Init(hInstance);
 
 	//生成
 	m_Renderer = new CRenderer ;
@@ -99,9 +100,10 @@ HRESULT CManager :: Init ( HINSTANCE hInstance , HWND hWnd , BOOL bWindow )
 *******************************************************************************/
 void CManager::Uninit(void)
 {
-	m_Input ->Uninit();
-	delete m_Input;
-	m_Input = NULL;
+	//m_Input ->Uninit();
+	//delete m_Input;
+	//m_Input = NULL;
+	InputPlayer::Uninit();
 
 	//破棄
 	m_Renderer ->Uninit();
@@ -138,7 +140,8 @@ void CManager::Update(void)
 {
 	m_Renderer ->Update();
 
-	m_Input->Update();
+	//m_Input->Update();
+	InputPlayer::Update();
 
 	m_Mode ->Update();
 	m_Fade ->Update();
@@ -189,9 +192,9 @@ CRenderer* CManager::GetRenderer (void)
 {
 	return  m_Renderer;
 }
-CInput* CManager::GetInput (void)
-{
-	return  m_Input;
-}
+//CInput* CManager::GetInput (void)
+//{
+//	return  m_Input;
+//}
 
 

@@ -382,7 +382,7 @@ void CSceneX::Uninit(void)
 *******************************************************************************/
 void CSceneX::Update(void)
 {
-	CInput *Input;
+	//CInput *Input;
 	CCamera *pCamera;
 	CAMERA Camera;
 	CMeshfield *MeshField;
@@ -390,23 +390,23 @@ void CSceneX::Update(void)
 	MeshField = game->GetMeshField();
 	pCamera = game->GetCamera();
 	Camera = pCamera->m_Camera;
-	Input = GetManager()->GetInput();
+	//Input = GetManager()->GetInput();
 
 	m_OldPos = m_Position;
 
-	if ( Input->GetKeyboardTrigger ( DIK_1 ) )
-	{
-		SetAnim (MOTIONTYPE_NEUTRAL);
-	}
-	if ( Input->GetKeyboardTrigger ( DIK_2 ) )
-	{
-		SetAnim (MOTIONTYPE_WALK);
-	}
+	//if ( Input->GetKeyboardTrigger ( DIK_1 ) )
+	//{
+	//	SetAnim (MOTIONTYPE_NEUTRAL);
+	//}
+	//if ( Input->GetKeyboardTrigger ( DIK_2 ) )
+	//{
+	//	SetAnim (MOTIONTYPE_WALK);
+	//}
 	m_Cnt++;
 	if (m_Cnt > 180)
 	{
 		m_fue = true;
-		if (Input->GetKeyboardTrigger(DIK_SPACE))
+		if (InputPlayer::GetTrigger(InputPlayer::ButtonJump,InputPlayer::Input1))
 		{
 			m_Shot = true;
 			m_fue = false;
@@ -428,121 +428,149 @@ void CSceneX::Update(void)
 
 
 	/*モデル移動*/
+	if (InputPlayer::GetDirectionValue() > 0.0f)
+	{
+		//m_Rotation.y = InputPlayer::GetDirectionAngle() - (-Camera.rot.y);
+		m_Position.x += cosf(InputPlayer::GetDirectionAngle())*m_Speed;
+		m_Position.z -= sinf(InputPlayer::GetDirectionAngle())*m_Speed*-1;
+	}
+	float LastSheepRot = 0;
+	LastSheepRot = m_Rotation.y;
+	//変化量
+	float ConversionQuantity = 0;
+	if (m_Position != m_OldPos)
+	{
+		ConversionQuantity = atan2f(m_Position.x - m_OldPos.x, m_Position.z - m_OldPos.z);
+		m_Rotation.y += (ConversionQuantity - LastSheepRot)*0.3f;
+
+	}
+	if (m_Rotation.y > D3DX_PI)
+	{
+		//m_Rotation.y = -D3DX_PI + (D3DX_PI - m_Rotation.y);
+		m_Rotation.y -= D3DX_PI * 2;
+	}
+	else if (m_Rotation.y < -D3DX_PI)
+	{
+		//m_Rotation.y = -D3DX_PI - (D3DX_PI + m_Rotation.y);
+		m_Rotation.y += D3DX_PI * 2;
+	}
+
 	/*奥*/
-	if ( Input->GetKeyboardPress ( DIK_W ) )
-	{
-		/*モデルが移動方向に向くようにする*/
-		m_Rotation . y = D3DX_PI - ( - Camera .rot .y ) ;
-		/*移動*/
-		m_Position . x += sinf ( Camera .rot .y )*m_Speed ;
-		m_Position . z += cosf ( Camera .rot .y )*m_Speed ;
+	//if ( Input->GetKeyboardPress ( DIK_W ) )
+	//{
+	//	/*モデルが移動方向に向くようにする*/
+	//	m_Rotation . y = D3DX_PI - ( - Camera .rot .y ) ;
+	//	/*移動*/
+	//	m_Position . x += sinf ( Camera .rot .y )*m_Speed ;
+	//	m_Position . z += cosf ( Camera .rot .y )*m_Speed ;
 
-	}
-	/*手前*/
-	if ( Input->GetKeyboardPress ( DIK_S ) )
-	{
-		/*モデルが移動方向に向くようにする*/
-		m_Rotation . y = ( Camera .rot .y ) ;
-		/*移動*/
-		m_Position . x -= sinf ( Camera .rot .y )*m_Speed  ;
-		m_Position . z -= cosf ( Camera .rot .y )*m_Speed  ;
-	}
+	//}
+	///*手前*/
+	//if ( Input->GetKeyboardPress ( DIK_S ) )
+	//{
+	//	/*モデルが移動方向に向くようにする*/
+	//	m_Rotation . y = ( Camera .rot .y ) ;
+	//	/*移動*/
+	//	m_Position . x -= sinf ( Camera .rot .y )*m_Speed  ;
+	//	m_Position . z -= cosf ( Camera .rot .y )*m_Speed  ;
+	//}
 
-	/*左*/
-	if ( Input->GetKeyboardPress ( DIK_A ) )
-	{
+	///*左*/
+	//if ( Input->GetKeyboardPress ( DIK_A ) )
+	//{
 
-		/*モデルが移動方向に向くようにする*/
-		m_Rotation . y = ( D3DX_PI * 0.5 ) - ( - Camera .rot .y ) ;
+	//	/*モデルが移動方向に向くようにする*/
+	//	m_Rotation . y = ( D3DX_PI * 0.5 ) - ( - Camera .rot .y ) ;
 
-		/*斜め移動*/
-		if ( Input->GetKeyboardPress ( DIK_W ) )
-		{
-			/*モデルが移動方向に向くようにする*/
-			//m_Rotation . y = ( PI * 0.75 ) - ( - Camera .rot .y ) ;
-			/*移動*/
-			m_Position . x += sinf ( ( D3DX_PI * ( 0.75 ) ) + Camera . rot . y ) ;
-			m_Position . z += cosf ( ( D3DX_PI * ( 0.75 ) ) + Camera . rot . y ) ;
+	//	/*斜め移動*/
+	//	if ( Input->GetKeyboardPress ( DIK_W ) )
+	//	{
+	//		/*モデルが移動方向に向くようにする*/
+	//		//m_Rotation . y = ( PI * 0.75 ) - ( - Camera .rot .y ) ;
+	//		/*移動*/
+	//		m_Position . x += sinf ( ( D3DX_PI * ( 0.75 ) ) + Camera . rot . y ) ;
+	//		m_Position . z += cosf ( ( D3DX_PI * ( 0.75 ) ) + Camera . rot . y ) ;
 
-		}
-		/*斜め移動*/
-		if ( Input->GetKeyboardPress ( DIK_S ) )
-		{
-			/*モデルが移動方向に向くようにする*/
-			m_Rotation . y = ( D3DX_PI * 0.25 ) - ( - Camera .rot .y ) ;
+	//	}
+	//	/*斜め移動*/
+	//	if ( Input->GetKeyboardPress ( DIK_S ) )
+	//	{
+	//		/*モデルが移動方向に向くようにする*/
+	//		m_Rotation . y = ( D3DX_PI * 0.25 ) - ( - Camera .rot .y ) ;
 
-			/*移動*/
-			m_Position . x += sinf ( ( D3DX_PI * ( 0.25 ) ) + Camera . rot . y ) ;
-			m_Position . z += cosf ( ( D3DX_PI * ( 0.25 ) ) + Camera . rot . y ) ;
+	//		/*移動*/
+	//		m_Position . x += sinf ( ( D3DX_PI * ( 0.25 ) ) + Camera . rot . y ) ;
+	//		m_Position . z += cosf ( ( D3DX_PI * ( 0.25 ) ) + Camera . rot . y ) ;
 
-		}
-		/*移動*/
-		m_Position . x -= cosf ( -Camera . rot . y )*m_Speed  ;
-		m_Position . z -= sinf ( -Camera . rot . y )*m_Speed  ;
+	//	}
+	//	/*移動*/
+	//	m_Position . x -= cosf ( -Camera . rot . y )*m_Speed  ;
+	//	m_Position . z -= sinf ( -Camera . rot . y )*m_Speed  ;
 
 
-	}
+	//}
 
-	if ( Input->GetKeyboardPress ( DIK_D ) )
-	{
-		/*モデルが移動方向に向くようにする*/
-		m_Rotation . y = ( - D3DX_PI * 0.5 ) - ( - Camera .rot .y ) ;
+	//if ( Input->GetKeyboardPress ( DIK_D ) )
+	//{
+	//	/*モデルが移動方向に向くようにする*/
+	//	m_Rotation . y = ( - D3DX_PI * 0.5 ) - ( - Camera .rot .y ) ;
 
-		/*斜め移動*/
-		if ( Input->GetKeyboardPress ( DIK_W ) )
-		{
-			/*モデルが移動方向に向くようにする*/
-			m_Rotation . y = ( -D3DX_PI * 0.75 ) - ( - Camera .rot .y ) ;
+	//	/*斜め移動*/
+	//	if ( Input->GetKeyboardPress ( DIK_W ) )
+	//	{
+	//		/*モデルが移動方向に向くようにする*/
+	//		m_Rotation . y = ( -D3DX_PI * 0.75 ) - ( - Camera .rot .y ) ;
 
-			/*移動*/
-			m_Position . x += sinf ( ( -D3DX_PI * ( 0.75 ) ) + Camera . rot . y ) ;
-			m_Position . z += cosf ( ( -D3DX_PI * ( 0.75 ) ) + Camera . rot . y ) ;
+	//		/*移動*/
+	//		m_Position . x += sinf ( ( -D3DX_PI * ( 0.75 ) ) + Camera . rot . y ) ;
+	//		m_Position . z += cosf ( ( -D3DX_PI * ( 0.75 ) ) + Camera . rot . y ) ;
 
-		}
-		/*斜め移動*/
-		if ( Input->GetKeyboardPress ( DIK_S ) )
-		{
-			/*モデルが移動方向に向くようにする*/
-			m_Rotation . y = ( -D3DX_PI * 0.25 ) - ( - Camera .rot .y ) ;
+	//	}
+	//	/*斜め移動*/
+	//	if ( Input->GetKeyboardPress ( DIK_S ) )
+	//	{
+	//		/*モデルが移動方向に向くようにする*/
+	//		m_Rotation . y = ( -D3DX_PI * 0.25 ) - ( - Camera .rot .y ) ;
 
-			/*移動*/
-			m_Position .x += sinf ( ( -D3DX_PI * ( 0.25 ) ) + Camera . rot . y ) ;
-			m_Position .z += cosf ( ( -D3DX_PI * ( 0.25 ) ) + Camera . rot . y ) ;
+	//		/*移動*/
+	//		m_Position .x += sinf ( ( -D3DX_PI * ( 0.25 ) ) + Camera . rot . y ) ;
+	//		m_Position .z += cosf ( ( -D3DX_PI * ( 0.25 ) ) + Camera . rot . y ) ;
 
-		}
-		/*移動*/
-		m_Position .x += cosf ( -Camera . rot . y )*m_Speed  ;
-		m_Position .z += sinf ( -Camera . rot . y )*m_Speed  ;
+	//	}
+	//	/*移動*/
+	//	m_Position .x += cosf ( -Camera . rot . y )*m_Speed  ;
+	//	m_Position .z += sinf ( -Camera . rot . y )*m_Speed  ;
 
-	}
-	if ( Input->GetKeyboardPress ( DIK_SPACE ) )
-	{
-		m_Speed = 8;
+	//}
+	//if ( Input->GetKeyboardPress ( DIK_SPACE ) )
+	//{
+	//	m_Speed = 8;
 
-		//m_Shot = true;
-		//m_Block = CBlock::Create();
-	}
-	else
-	{
-		m_Speed = 8;
-	}
+	//	//m_Shot = true;
+	//	//m_Block = CBlock::Create();
+	//}
+	//else
+	//{
+	//	m_Speed = 8;
+	//}
 
-	if ( Input->GetKeyboardPress(DIK_Z) )
-	{
-		m_Rotation.y += 0.1;
-	}
-	if (Input->GetKeyboardPress(DIK_C) )
-	{
-		m_Rotation.y -= 0.1;
-	}
+	//if ( Input->GetKeyboardPress(DIK_Z) )
+	//{
+	//	m_Rotation.y += 0.1;
+	//}
+	//if (Input->GetKeyboardPress(DIK_C) )
+	//{
+	//	m_Rotation.y -= 0.1;
+	//}
+	//m_Position.y = MeshField->GetHeight(m_Position);
+	////オブジェクトを消す
+	//if ( Input->GetKeyboardTrigger(DIK_DELETE))
+	//{
+	//	Uninit();
+	//	Release(1);
+	//}
+
 	m_Position.y = MeshField->GetHeight(m_Position);
-	//オブジェクトを消す
-	if ( Input->GetKeyboardTrigger(DIK_DELETE))
-	{
-		Uninit();
-		Release(1);
-	}
-
 	//世界の境界
 	if (MeshField->LimitField(m_Position) == true )
 	{
