@@ -47,11 +47,12 @@ protected:
 public:
 	CEffect(int Prioriry = 1);
 	~CEffect();
-	HRESULT Init(const char *filename);
+	HRESULT Init(const char *filename, float width, float height);
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
-	static CEffect* Create(const char *filename, int Pattern_x, int Pattern_y,D3DXVECTOR3 Pos);
+	static CEffect* Create(const char *filename, int Pattern_x, int Pattern_y,D3DXVECTOR3 Pos,float width ,float height, LPDIRECT3DTEXTURE9 tex);
+	static LPDIRECT3DTEXTURE9 Load(const char *filename);
 	//D3DXVECTOR3 GetPosition ( void );
 
 

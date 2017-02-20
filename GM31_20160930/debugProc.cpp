@@ -62,7 +62,7 @@ void DrawDebugProc( void )
 	RECT rect = { 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
 
 	#ifdef _DEBUG
-		g_pFont -> DrawText( NULL, &g_aStrDebug[ 0 ], -1, &rect, DT_LEFT, D3DCOLOR_RGBA( 255, 255, 255, 255 ) );
+		//g_pFont -> DrawText( NULL, &g_aStrDebug[ 0 ], -1, &rect, DT_LEFT, D3DCOLOR_RGBA( 255, 255, 255, 255 ) );
 	#endif
 
 	memset( g_aStrDebug, 0, sizeof g_aStrDebug );

@@ -78,6 +78,8 @@ protected:
 	int m_Key;
 	int m_Frame;
 
+	LPDIRECT3DTEXTURE9 m_tex;
+
 
 
 

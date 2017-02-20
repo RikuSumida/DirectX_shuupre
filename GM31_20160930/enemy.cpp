@@ -50,6 +50,8 @@ CEnemy::CEnemy(int Priority):CScene3D(Priority)
 	m_WanderRadius = 200;
 	m_WanderDistance = 250;
 
+	m_tex = CEffect::Load("data/TEXTURE/explosion000.png");
+
 
 
 }
@@ -82,7 +84,7 @@ HRESULT CEnemy:: Init ( void )
 	//モデル読み込み
 	m_model->Init("data/MODEL/Sheep.x",NULL);
 	//m_Target->Init("data/MODEL/Target.x", NULL);
-	m_Target = CSceneObject::Create("data/MODEL/Target.x");
+	//m_Target = CSceneObject::Create("data/MODEL/Target.x");
 
 
 	///*テクスチャの読み込み*/
@@ -170,6 +172,7 @@ CEnemy* CEnemy::Create(void)
 void CEnemy::Uninit(void)
 {
 	m_model->Uninit();
+	delete m_model;
 	//for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
 	//{
 	//	/*頂点バッファの解放*/
@@ -292,6 +295,8 @@ void CEnemy::Update(void)
 		D3DXVec3Normalize(&m_change, &m_change);
 
 		m_Vec1 += -m_change*4;
+
+		//CEffect::Create("data/TEXTURE/explosion000.png", 8, 1, m_Position, 30.0f, 30.0f,m_tex);
 
 	}
 	if (Length < PLAYER_DISTANCE + 100.0f + ShotLength)
@@ -448,8 +453,8 @@ void CEnemy::Update(void)
 	if (Length < ENEMY_GATE && m_Use == true && m_Tracking == true)
 	{
 		m_Use = false;
-		CEffect::Create("data/TEXTURE/explosion000.png", 8, 1, m_Position);
-		CSoundGL::Start(SOUND_LABEL_SE_CRY, FALSE);
+		CEffect::Create("data/TEXTURE/explosion000.png", 8, 1, m_Position,100.0f,100.0f,m_tex);
+		//CSoundGL::Start(SOUND_LABEL_SE_CRY, FALSE);
 	}
 
 

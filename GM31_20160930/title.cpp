@@ -7,6 +7,7 @@
 #include "title.h"
 #include "blink.h"
 #include "fence.h"
+#include "titlesheep.h"
 /*******************************************************************************
 *
 *	マクロ定義
@@ -39,6 +40,11 @@ CTitle::~CTitle()
 //更新
 void CTitle::Init(void)
 {
+	CSoundGL::Init();
+	CSoundGL::Load();
+
+	CSoundGL::Start(SOUND_LABEL_BGM000, TRUE);
+
 	m_Camera = new CCamera;
 	m_Camera->Init();
 
@@ -48,6 +54,13 @@ void CTitle::Init(void)
 	m_Mesh = CMeshfield::Create();
 	CSky::Create();
 
+
+	for (int i = 0; i<ENEMY_MAX; i++)
+	{
+		m_Enemy[i] = CTitleSheep::Create();
+	}
+
+
 	//CTitleBg::Create();
 	CTitleRogo::Create();
 	CBlink::Create("data/TEXTURE/PressEnter.png",400.0f,200.0f,D3DXVECTOR3(450.0f,500.0f,0.0f));
@@ -55,21 +68,19 @@ void CTitle::Init(void)
 	CFence::Create();
 
 
-	CSoundGL::Init();
-	CSoundGL::Load();
-
-	CSoundGL::Start(SOUND_LABEL_BGM000,TRUE);
 }
 //描画
 void CTitle::Uninit(void)
 {
 	m_Camera->Uninit();
-	delete m_Camera;
 	m_Camera = NULL;
 
+	delete m_Camera;
+
 	m_Light->Uninit();
-	delete m_Light;
 	m_Light = NULL;
+
+	delete m_Light;
 
 	CScene::UninitAll();
 	CSoundGL::Uninit();
@@ -88,7 +99,7 @@ void CTitle::Update(void)
 	m_Cnt++;
 	if(m_Cnt >= 30)
 	{
-		if (InputPlayer::GetTrigger(InputPlayer::ButtonJump, InputPlayer::Input1))
+		if (InputPlayer::GetTrigger(InputPlayer::ButtonConfirm, InputPlayer::Input1))
 		{
 			CSoundGL::Start(SOUND_LABEL_SE_ENTER,FALSE);
 			CFade::Start(new CGame);
@@ -113,13 +124,9 @@ CCamera* CTitle::GetCamera(void)
 {
 	return  m_Camera;
 }
-CEnemy* CTitle::GetEnemy(int id)
+CTitleSheep* CTitle::GetEnemy(int id)
 {
 
 	return m_Enemy[id];
-}
-CGate* CTitle::GetGate(void)
-{
-	return m_Gate;
 }
 

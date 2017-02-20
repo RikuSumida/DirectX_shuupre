@@ -159,7 +159,7 @@ void CGate::Update(void)
 	}
 	m_CaptureNum = m_EnemyCnt;
 
-	if (m_CaptureNum >= ENEMY_MAX)
+	if (m_CaptureNum >= ENEMY_MAX-1)
 	{
 		CFade::Start(new CResult);
 	}

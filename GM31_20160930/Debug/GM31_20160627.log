@@ -1,13 +1,4 @@
-﻿  enemy.cpp
+﻿  gate.cpp
 d:\shuupure\gm31_20160930\fade.h(23): warning C4091: 'typedef ': ignored on left of 'FADE' when no variable is declared
-d:\shuupure\gm31_20160930\enemy.cpp(133): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(141): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(141): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(71): warning C4101: 'pVtx': unreferenced local variable
-d:\shuupure\gm31_20160930\enemy.cpp(348): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(387): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(210): warning C4101: 'Block': unreferenced local variable
-d:\shuupure\gm31_20160930\enemy.cpp(484): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(489): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
-d:\shuupure\gm31_20160930\enemy.cpp(497): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+d:\shuupure\gm31_20160930\gate.cpp(63): warning C4101: 'pVtx': unreferenced local variable
   GM31_20160627.vcxproj -> D:\shuupure\GM31_20160930\Debug\GM31_20160627.exe

@@ -28,15 +28,24 @@ void CSoundGL::Init(void)
 //ì«Ç›çûÇ›
 void CSoundGL::Load(void)
 {
-	alGenBuffers( SOUND_NUM, m_buffer );
-	alGenSources( SOURCE_NUM, m_source );
+
+	for (int i = 0; i < SOUND_NUM; i++)
+	{
+		//alGenBuffers(1, &m_buffer[i]);
+	}
+	for (int i = 0; i < SOURCE_NUM; i++)
+	{
+		alGenSources(1, &m_source[i]);
+	}
+
+	
 	//m_buffer[0] = alutCreateBufferHelloWorld(); 
 
 	m_buffer[0] = alutCreateBufferFromFile("data/BGM/game.wav");
 	m_buffer[1] = alutCreateBufferFromFile("data/SE/Enemycapture.wav");
 	m_buffer[2] = alutCreateBufferFromFile("data/SE/fue.wav");
 	m_buffer[3] = alutCreateBufferFromFile("data/SE/enter.wav");
-	m_buffer[4] = alutCreateBufferFromFile("data/SE/sheep-cry1.wav");
+	//m_buffer[4] = alutCreateBufferFromFile("data/SE/sheep-cry1.wav");
 
 }
 //çƒê∂
