@@ -171,6 +171,9 @@
     <ClCompile Include="inputX.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="titlesheep.cpp">
+      <Filter>ソース ファイル\title</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="al.h">
@@ -298,6 +301,9 @@
     </ClInclude>
     <ClInclude Include="inputX.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="titlesheep.h">
+      <Filter>ヘッダー ファイル\title</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

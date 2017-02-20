@@ -49,16 +49,16 @@ CEffect::~CEffect()
 *
 *
 *******************************************************************************/
-HRESULT CEffect::Init(const char *filename)
+HRESULT CEffect::Init(const char *filename, float width, float height)
 {
 	VERTEX_3D *pVtx;
 	CRenderer *Renderer;
 	Renderer = GetManager()->GetRenderer();
 	LPDIRECT3DDEVICE9 pDevice = Renderer->GetDevice();
 	/*対角線の長さ*/
-	m_fLengthbillboard = sqrtf((EFFECT_WIDTH * EFFECT_WIDTH) + (EFFECT_HEIGHT * EFFECT_HEIGHT));
+	m_fLengthbillboard = sqrtf((width * width) + (height * height));
 	/*角度*/
-	m_fAnglebillboard = atan2f(EFFECT_WIDTH, EFFECT_HEIGHT);
+	m_fAnglebillboard = atan2f(width, height);
 
 
 	/*テクスチャの読み込み*/
@@ -75,10 +75,10 @@ HRESULT CEffect::Init(const char *filename)
 	/*メモリ確保*/
 	m_pVtxBuffPolygon->Lock(0, 0, (void**)& pVtx, 0);
 	pVtx[0].pos.x =  - sinf(m_fAnglebillboard + m_Rotation.z) * m_fLengthbillboard;
-	pVtx[0].pos.y = 100.0f;//m_Position.y - cosf (m_fAnglebillboard + m_Rotation.z  ) * m_fLengthbillboard;
+	pVtx[0].pos.y = height;//m_Position.y - cosf (m_fAnglebillboard + m_Rotation.z  ) * m_fLengthbillboard;
 	pVtx[0].pos.z = 0.0f;
 	pVtx[1].pos.x =  sinf(m_fAnglebillboard + m_Rotation.z) * m_fLengthbillboard;
-	pVtx[1].pos.y = 100.0f;//m_Position.y - cosf (m_fAnglebillboard + m_Rotation.z  ) * m_fLengthbillboard;
+	pVtx[1].pos.y = height;//m_Position.y - cosf (m_fAnglebillboard + m_Rotation.z  ) * m_fLengthbillboard;
 	pVtx[1].pos.z = 0.0f;
 	pVtx[2].pos.x =  - sinf(m_fAnglebillboard - m_Rotation.z) * m_fLengthbillboard;
 	pVtx[2].pos.y = 0;//g_posbillboard .y + cosf ( g_fAnglebillboard - g_rotbillboard .z  ) * g_fLengthbillboard ;
@@ -112,8 +112,21 @@ HRESULT CEffect::Init(const char *filename)
 	return S_OK;
 
 }
+LPDIRECT3DTEXTURE9 CEffect::Load(const char *filename)
+{
+	CRenderer *Renderer;
+	Renderer = GetManager()->GetRenderer();
+	LPDIRECT3DDEVICE9 pDevice = Renderer->GetDevice();
+	LPDIRECT3DTEXTURE9 tex;
+
+	D3DXCreateTextureFromFile(pDevice, filename, &tex);
+
+	return tex;
+
+
+}
 //生成
-CEffect* CEffect::Create(const char *filename, int Pattern_x, int Pattern_y, D3DXVECTOR3 Pos)
+CEffect* CEffect::Create(const char *filename, int Pattern_x, int Pattern_y, D3DXVECTOR3 Pos, float width, float height, LPDIRECT3DTEXTURE9 tex)
 {
 	CEffect *Effect;
 	Effect = new CEffect;
@@ -122,8 +135,9 @@ CEffect* CEffect::Create(const char *filename, int Pattern_x, int Pattern_y, D3D
 	Effect->m_Width = 1 / (float)Pattern_x;
 	Effect->m_Height = 1 / (float)Pattern_y;
 	Effect->m_Position = Pos;
+	Effect->m_pTexturePolygon = tex;
 
-	Effect->Init(filename);
+	Effect->Init(filename,width,height);
 
 	return Effect;
 

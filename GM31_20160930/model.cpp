@@ -64,7 +64,7 @@ HRESULT CModel:: Init ( const char *filename , CModel* parent )
 	{
 		return E_FAIL ;
 	}
-	// マテリアル情報を取り出す
+	//// マテリアル情報を取り出す
 	D3DXMATERIAL *d3Mat = (D3DXMATERIAL*)m_pBuffMat->GetBufferPointer();
 
 	m_pMeshMat = new D3DMATERIAL9[m_numMat];		// メッシュ情報
@@ -137,6 +137,18 @@ void CModel::Uninit(void)
 	if(m_Parent != NULL)
 	{
 		//delete m_Parent;
+	}
+	if (m_pMeshMat != NULL)
+	{
+
+		delete[] m_pMeshMat;
+
+	}
+	if (m_pMeshTex != NULL)
+	{
+
+		delete[] m_pMeshTex;
+
 	}
 
 }

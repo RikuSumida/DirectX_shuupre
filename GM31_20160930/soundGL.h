@@ -24,7 +24,7 @@
 *
 *******************************************************************************/
 
-#define SOUND_NUM (4)
+#define SOUND_NUM (3)
 #define SOURCE_NUM (16)
 
 typedef enum
@@ -33,7 +33,7 @@ typedef enum
 	SOUND_LABEL_SE_OBJECT,		// オブジェクト
 	SOUND_LABEL_SE_FUE,         //笛の音
 	SOUND_LABEL_SE_ENTER,       //決定音
-	SOUND_LABEL_SE_CRY,         //鳴き声
+	//SOUND_LABEL_SE_CRY,         //鳴き声
 	SOUND_LABEL_MAX,
 } SOUND_LABEL;
 

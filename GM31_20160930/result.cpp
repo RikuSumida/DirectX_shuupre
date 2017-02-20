@@ -67,7 +67,7 @@ void CResult::Update(void)
 	if(m_Cnt >= 60)
 	{
 
-		if (InputPlayer::GetTrigger(InputPlayer::ButtonJump, InputPlayer::Input1))
+		if (InputPlayer::GetTrigger(InputPlayer::ButtonConfirm, InputPlayer::Input1))
 		{
 			CSoundGL::Start(SOUND_LABEL_SE_ENTER,FALSE);
 

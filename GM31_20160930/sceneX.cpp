@@ -181,6 +181,8 @@ CSceneX::CSceneX(int Priority):CScene(Priority)
 	m_Speed = 5;
 	m_Cnt = 0;
 
+	m_tex = CEffect::Load("data/TEXTURE/!!.png");
+
 }
 //デストラクタ
 CSceneX::~CSceneX()
@@ -358,6 +360,7 @@ void CSceneX::Uninit(void)
 	for(int i=0; i<10; i++)
 	{
 		m_Model[i]->Uninit();
+		delete m_Model[i];
 	}
 	/*メッシュ情報の解放*/
 	if ( m_pMesh != NULL )
@@ -413,7 +416,7 @@ void CSceneX::Update(void)
 
 			SetAnim(MOTIONTYPE_PANCH);
 			m_Cnt = 0;
-			CEffect::Create("data/TEXTURE/!!.png", 5, 1, D3DXVECTOR3(m_Position.x, m_Position.y+100.0f, m_Position.z));
+			CEffect::Create("data/TEXTURE/!!.png", 5, 1, D3DXVECTOR3(m_Position.x, m_Position.y+100.0f, m_Position.z),100.0f,100.0f,m_tex);
 			CSoundGL::Start(SOUND_LABEL_SE_FUE,FALSE);
 
 		}

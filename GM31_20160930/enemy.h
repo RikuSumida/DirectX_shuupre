@@ -11,8 +11,6 @@
 #define Enemy_WIDTH ( 50.0f / 2 )
 /*ポリゴンの高さの半分*/
 #define Enemy_HEIGHT ( 50.0f / 2 )
-//敵の数
-#define ENEMY_MAX (31)
 //最短距離
 #define ENEMY_DISTANCE (10.0f)
 //プレイヤーとの距離
@@ -69,6 +67,9 @@ protected:
 	//CBillbord *m_Target;
 	int m_Cnt;
 	int m_randvalue;
+
+	LPDIRECT3DTEXTURE9 m_tex;
+
 
 
 

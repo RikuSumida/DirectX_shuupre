@@ -5,7 +5,7 @@
 *	インクルードファイル
 *
 *******************************************************************************/
-
+#include "manager.h"
 
 
 
@@ -26,7 +26,7 @@ class CLight;
 class CMeshfield;
 class CSceneX;
 class CBillbord;
-class CEnemy;
+class CTitleSheep;
 class CGate;
 
 class CTitle : public CMode
@@ -38,8 +38,8 @@ protected:
 
 	CMeshfield *m_Mesh;
 
-	CEnemy* m_Enemy[30];
-	CGate* m_Gate;
+	//CGate* m_Gate;
+	CTitleSheep* m_Enemy[ENEMY_MAX];
 
 
 public :
@@ -53,8 +53,8 @@ public :
 
 	CMeshfield *GetMeshField(void);
 	CCamera* GetCamera(void);
-	CEnemy* GetEnemy(int id);
-	CGate* GetGate(void);
+	CTitleSheep* GetEnemy(int id);
+	//CGate* GetGate(void);
 
 
 

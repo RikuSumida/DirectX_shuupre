@@ -5,7 +5,7 @@
 *	インクルードファイル
 *
 *******************************************************************************/
-
+#include "manager.h"
 
 
 
@@ -37,7 +37,7 @@ protected:
 
 	CSceneX* m_Player;
 	CBillbord* m_Billbord;
-	CEnemy* m_Enemy[30];
+	CEnemy* m_Enemy[ENEMY_MAX];
 	CGate* m_Gate;
 
 public :

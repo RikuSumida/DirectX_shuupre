@@ -53,14 +53,15 @@ HRESULT CResultBg:: Init ( void )
 
 	/*テクスチャの読み込み*/
 	int EnemyCnt = GetEnemyNum();
-	if(EnemyCnt > 15)
-	{
-		D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/back.jpg" , & m_pTexturePolygon ) ;
-	}
-	else
-	{
-		D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/back02.jpg" , & m_pTexturePolygon ) ;
-	}
+	D3DXCreateTextureFromFile(pDevice, "data/TEXTURE/back02.jpg", &m_pTexturePolygon);
+	//if(EnemyCnt > 15)
+	//{
+	//	D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/back.jpg" , & m_pTexturePolygon ) ;
+	//}
+	//else
+	//{
+	//	D3DXCreateTextureFromFile ( pDevice , "data/TEXTURE/back02.jpg" , & m_pTexturePolygon ) ;
+	//}
 	for ( int nCnt = 0 ; nCnt < POKYGON_MAX ; nCnt ++ )
 	{
 		/*頂点バッファの生成*                        確保するバッファサイズ                         使用する頂点フォーマット*/
